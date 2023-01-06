@@ -1,0 +1,63 @@
+ 1.
+ 
+create table Student1(roll int primary key,name varchar(12) not null,address varchar(12) not null,mobile varchar(10) not null);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table course(cid int primary key,cname varchar(12) not null,fee int not null,duration varchar(12) not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table stud_course(roll int,cid int,foreign key (roll) references student1(roll),foreign key (cid) references course(cid));
+Query OK, 0 rows affected (0.06 sec)
+
+2.
+STUDENT DETAILS:-
+
+public class Student {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("give roll");
+		int r=sc.nextInt();
+		sc.nextLine();
+		System.out.println("give name");
+		String n=sc.next();
+		System.out.println("give address");
+		String ad=sc.next();
+		System.out.println("give mobile");
+		String mob=sc.next();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		}catch(ClassNotFoundException e) { 
+			e.printStackTrace();
+		}
+		
+		String url="jdbc:mysql://localhost:3306/sqleval4";
+		
+		try(Connection c=DriverManager.getConnection(url,"root","ak@25");) {
+			
+		PreparedStatement p=c.prepareStatement("insert into Student1 values(?,?,?,?)");
+	   
+	    p.setInt(1,r);
+	    p.setString(2,n);
+	    p.setString(3,ad);
+	    p.setString(4,mob);
+	    int z=p.executeUpdate(); 
+	    if(z>0) {
+	    	System.out.println("insertion done");
+	    }else {
+	    	System.out.println("not done!");
+	    }
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+COURSE DETAILS

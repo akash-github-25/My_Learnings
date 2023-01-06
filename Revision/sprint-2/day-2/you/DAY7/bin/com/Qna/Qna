@@ -1,0 +1,38 @@
+1-
+This package contains important classes like BufferedReader, BufferedWriter, File, 
+InputStream, OutputStream, etc.
+
+2-
+   BufferedReader vs FileReader 
+   
+a.It is used to read characters from any type of character input stream (String, Files, etc.)
+	It can be used only for reading files
+	
+b.Uses Buffer internally to read characters from	Doesn’t use Buffer.
+	 Directly reads from the file by accessing the hard drive.
+	 
+c.Faster
+Slower
+
+d.Much more efficient for reading files.
+	Less efficient 
+	
+3-
+BufferReader.
+
+4-
+
+
+5-
+Java does not verify unchecked exceptions at compile-time. Furthermore, we don't have to
+ declare unchecked exceptions in a method with the throws keyword. And although the above
+  code does not have any errors during compile-time, it will throw ArithmeticException 
+  at runtime.
+  
+  Because the compiler can't anticipate logical errors that arise only at runtime,
+   it can't check for these types of problems at compile time. That's why they are 
+   called "unchecked" exceptions. Unchecked exceptions result from faulty logic that 
+   can occur anywhere in a software program.
+   
+   6.
+   

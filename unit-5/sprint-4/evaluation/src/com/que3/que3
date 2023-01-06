@@ -1,0 +1,43 @@
+RELATIONSHIP AMONG TABLES:
+
+one to one:-A type of table in which a row of one table is mapped to only one record of another 
+table;
+
+example:-
+
+create table Data(roll int,id int primary key);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table studdata(class int unique,foreign key(class) references Data(id));
+Query OK, 0 rows affected (0.04 sec)
+
+
+
+one to many:-A type of table in which a row of one table is mapped to more than one record of 
+another table.
+
+example:-
+
+create table Drum(roll int,id int primary key);
+Query OK, 0 rows affected (0.04 sec)
+
+ create table studdrum(class int,foreign key(class) references Data(id));
+Query OK, 0 rows affected (0.04 sec)
+
+
+many to many;- A type of table in which one row of one table can relate to more than one record of
+another table and vice-versa.
+
+create table department(did int primary key,dname varchar(12) not null,location varchar(12) not null);
+ 
+ create table Employee(empid int primary key,ename varchar(12) not null,address varchar(12) not null,mobile varchar(12) not null,salary int not null,deptid int);
+ 
+ create table Student_course(did int,empid int,foreign key (did) references department(did),foreign key (empid) references Employee(empid));
+ 
+ 
+ examples-ALL of these tables can be used to make student details management system.
+
+
+
+
+

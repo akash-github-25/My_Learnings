@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "burger",
+      "price": "200",
+      "url": "https://img.freepik.com/premium-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?w=2000"
+    },
+    {
+      "id": "2",
+      "name": "pizza",
+      "price": "240",
+      "url": "https://thumbs.dreamstime.com/b/italian-pepperoni-pizza-thick-pie-crust-spicy-sausage-mozzarella-tomato-isolated-white-viewed-whole-80010925.jpg"
+    },
+    {
+      "id": "3",
+      "name": "pasta",
+      "price": "188",
+      "url": "https://thumbs.dreamstime.com/b/gourmet-tasty-italian-penne-pasta-plate-close-up-spicy-tomato-herbs-white-served-top-wooden-table-58667798.jpg"
+    },
+    {
+      "id": "5",
+      "name": "butter naan",
+      "price": "340",
+      "url": "https://www.cookwithmanali.com/wp-content/uploads/2014/11/Soft-Homemade-Naan-500x500.jpg"
+    },
+    {
+      "id": "6",
+      "name": "chicken handi",
+      "price": "600",
+      "url": "https://i0.wp.com/tiffinandteaofficial.com/wp-content/uploads/2020/10/IMG_7510-1.jpg?resize=800%2C1174&ssl=1"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <a href="login.html"></a>
+    <a href="mens.html"></a>
+    <a href="womens.html"></a>
+    <a href="signup.html"></a>
+    <style>
+        #box{
+            display: flex;
+            border: 1px solid red;
+            width:80%;
+            margin: auto;
+            justify-content: space-between;
+            background-color: black;
+        }
+        #op{
+            border:1px solid red;
+            display: flex;
+            width:50%;
+            justify-content: space-between;
+            color: white;
+        
+        }
+        #nav{
+            border: 1px solid green;
+            width:20%;
+            color:white
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+    <div id="nav">
+        <p>Reebok</p>
+    </div>
+    <div id="op">
+        <p id="men">mens page</p>
+        <p id="women">womens page</p>
+        <p id="login">login</p>
+        <p id="signup">signup</p>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let x=document.querySelector("#login").addEventListener("click",lo)
+    let y=document.querySelector("#women").addEventListener("click",lo1)
+    let z=document.querySelector("#men").addEventListener("click",lo2)
+    let t=document.querySelector("#signup").addEventListener("click",lo3)
+    let s=localStorage.getItem("data")
+    console.log(s)
+    function lo(){
+      window.location.href="login.html"
+    }
+    function lo1(){
+        if( s==undefined || s=="unsucessful"){
+            window.location.href="login.html"
+        }else{
+            window.location.href="womens.html"
+        }
+        }
+    
+    function lo2(){
+        if(s==undefined || s=="unsucessful"){
+            window.location.href="login.html"
+        }else{
+            window.location.href="mens.html"
+        }
+        }
+    
+    function lo3(){
+      window.location.href="signup.html"
+    }
+
+</script>

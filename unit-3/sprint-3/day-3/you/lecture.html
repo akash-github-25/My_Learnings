@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #8caacf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0468aa;
+  color: white;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+  <select name="" id="select">
+    <option value="">filter</option>
+    <option value="A-Z">A-Z</option>
+    <option value="Z-A">Z-A</option>
+  </select>
+   <table>
+    <thead>
+        <tr>
+            <th>Assignment name</th>
+            <th>Assignment type</th>
+            <th>Deadline date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+   </table>
+</body>
+</html>
+<script>
+     let arr=JSON.parse(localStorage.getItem("data"))||[]
+     console.log(arr)
+     document.querySelector("#select").addEventListener("change",on)
+     function on(){
+      let select=document.querySelector("#select").value
+      if(select=="A-Z"){
+       arr.sort(function(a,b){
+        console.log(a.name,b.name)
+       if(a.name1>b.name1){
+        return 1
+       }else if(a.name1<b.name1){
+        return -1
+       }else{
+        return 0
+       }
+        })
+        display(arr)
+      }
+      if(select=="Z-A"){
+       arr.sort(function(a,b){
+        console.log(a.name,b.name)
+       if(a.name1<b.name1){
+        return 1
+       }else if(a.name1>b.name1){
+        return -1
+       }else{
+        return 0
+       }
+        })
+        display(arr)
+      }
+     }
+
+    display(arr)
+    function display(arr){
+        document.querySelector("tbody").innerHTML=""
+        arr.forEach((el,index)=>{
+            // console.log(el.name)
+            let tr=document.createElement("tr")
+          let td1=document.createElement("td")
+  td1.innerText=el.name
+ let td2=document.createElement("td")
+  td2.innerText=el.name1
+ let td3=document.createElement("td")
+  td3.innerText=el.date
+  tr.append(td1,td2,td3)
+  document.querySelector("tbody").append(tr)
+        })
+    }
+</script>

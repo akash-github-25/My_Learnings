@@ -1,0 +1,10 @@
+1.With iterator you can move only forward, but with ListIterator you can move backword 
+also while reading the elements.
+2.With ListIterator you can obtain the index at any point while traversing, which is not 
+possible with iterators.
+3.With iterator you can check only for next element available or not, but in listiterator 
+you can check previous and next elements.
+4.With listiterator you can add new element at any point of time, while traversing. 
+Not possible with iterator.
+5.With listiterator you can modify an element while traversing, which is not possible with
+ iterator.

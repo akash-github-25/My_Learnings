@@ -1,0 +1,12 @@
+DEADLOCK-
+
+A Deadlock is  a situation when two threads are waiting for each other for an infinite number of time.Due to 
+which threads reach to a condition where the cannot go on further.Such a lock which does not have any key is 
+called DEADLOCK.
+This occurs when all the required methods are
+ Synchronized.In order to avoid this we need to remove synchronization from one of the methods.
+ 
+ example in under que1 package.
+
+
+

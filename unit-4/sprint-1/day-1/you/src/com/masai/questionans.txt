@@ -1,0 +1,26 @@
+1->
+JDK- JDK is basically a combination of JRE and development tools like java
+compiler,debugger..etc.The full form of JDK is Java Standard Development Kit.
+JRE-JRE is a combination of JVM and library classes.The full form of JRE is Java runtime
+Environment.
+JVM-The full form JVM is Java Virtual machine.
+2->
+JSE-The full form of JSE is java standard edition.It is standard edition or core edition ,it consists
+of core libraries to develop networking,database..etc.
+JEE-The full form of JEE is Java enterprise edition. It is used to create secure server type
+applications.
+JME-The full form of JME is Java micro edition, it is used in micro devices like mobile tv..etc.
+3->
+Java is portable and platform independent , we can compile java source code into bytecode and
+this bytecode can be run on different platforms,so by compiling java source code in one
+operating system we can use it in different operating systems.
+4->
+FEATURES OF JAVA:-
+a. Java is object oriented programming language so it is easy to make and maintain.
+b. Java is a very secure programming language.
+c. Java is easier than any other programming language.
+d. Java is portable and platform independent , we can compile java source code into
+bytecode and this bytecode can be run on different platforms,so by compiling java
+source code in one operating system we can use it in different operating systems.
+e. Java is a very strong language.Irt has a very good memory management system.
+f. It is multithreaded.

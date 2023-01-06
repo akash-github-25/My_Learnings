@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <a href="navbar.html"></a>
+    <a href="mens.html"></a>
+    <a href="womens.html"></a>
+    <a href="signup.html"></a>
+    <style>
+        *{
+            margin: 0px;
+        }
+        #main{
+            width: 70%;
+            height: 745px;
+            border: 1px solid black;
+            margin: auto;
+            background: rgb(74,130,209);
+            background: linear-gradient(72deg, rgba(74,130,209,1) 0%, rgba(119,89,185,1) 100%);
+        }
+        #main>div{
+            text-align: center;
+            width: 40%;
+            height: 88%;
+            border: 1px solid blue;
+            margin: auto;
+            margin-top: 5%;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            border-radius: 12px ;
+            font-family: Arial;
+            background-color: whitesmoke;
+        }
+        hr{
+            border: transparent;
+        }
+        h1{
+            padding-top: 60px;
+            font-size: 37px;
+            font-weight: bolder;
+        }
+        input{
+            font-size: 18px;
+            width: 75%;
+            height: 40px;
+            border: transparent ;
+            border-bottom: 3.5px solid #bbbabe;
+            background-color: whitesmoke;
+        }
+        input::placeholder{
+            color:#bbbabe;
+        }
+        #main>div>input:nth-child(2){
+            margin-top:20px;
+        }
+        #main>div>input:nth-child(4){
+            margin-top:-120px;
+        }
+        button{
+            width: 75%;
+            height: 60px;
+            font-size: 18px;
+            color: white;
+            margin-top: -180px;
+            background: rgb(74,130,209);
+            background: linear-gradient(72deg, rgba(74,130,209,1) 0%, rgba(119,89,185,1) 100%);
+            border: transparent;
+        }
+        span{
+            color: #206a92;
+            font-weight: bold;
+        }
+        p{
+            font-size: 15px;
+        }
+        div>button+p{
+            margin-top: -80px;
+        }
+        div>p+p{
+            margin-top: -130px;
+        }
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <h1>Login</h1>
+            <input id="login"type="email" placeholder="Email">
+            <hr>
+            <input id="pass" type="password" placeholder="Password">
+            <hr>
+            <button>Login</button>
+            <p>Forget <span>Password</span>?</p>
+            <p>Don't have an account? <span>Sign up</span></p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    let arra=JSON.parse(localStorage.getItem("object"))
+    document.querySelector("button").addEventListener("click",on1)
+    function on1(){
+      arra.forEach(function(el){
+        let x=document.querySelector("#login").value
+let y=document.querySelector("#pass").value;
+          if((el.email==x)&&(el.password==y)){
+              alert("sucessful login")
+              window.location.href="mens.html"
+            localStorage.setItem("data","sucessful")
+
+          }else{
+              alert("unsusseful login")
+              localStorage.setItem("data","unsucessful")
+          }
+      });
+    }
+    
+</script>

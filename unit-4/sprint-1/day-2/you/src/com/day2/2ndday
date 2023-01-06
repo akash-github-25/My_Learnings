@@ -1,0 +1,42 @@
+1-.
+Type Casting= The process of converting one datatype to another datatype is called Type casting.
+
+There are two types 1. Implicit Type Casting and 
+                                  2.Explicit Type Casting.
+
+Implicit Type Casting-The process of conversion of lower datatype to higher datatype.
+
+Ex-
+byte a=20;
+int i= a;
+System.out.println(a+" "+i);
+Output-20 20.
+
+Explicit Type Casting-The process of conversion of higher datatype to lower datatype.
+
+Ex-
+int i= 25;
+byte a=(byte)i;
+System.out.println(a+" "+i);
+Output-25 25.
+
+3-> In java , class  variable has a default value , while in the case of local variable we need to first initialize it otherwise it will give an error.
+For ex-
+a-> 
+int i=20;
+int j;
+if(i==20) {
+	j=12;
+}
+ System.out.println(j)
+output-The local variable j has not been initialized.
+b->
+int i=20;
+		int j;
+		if(i==20) {
+			j=12;
+		}else {
+			j=99;
+		}
+	    System.out.println(j);
+output-No Compilation error.

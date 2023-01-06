@@ -1,0 +1,189 @@
+﻿1.create table PROGRAMMER(EmpNo  bigint(5),Projid varchar(7),LastName varchar(30),FirstName varchar(30),HireDate date,Language varchar(15),TaskNo int(2),Privilege varchar(25));
+
+
+2.ysql> insert into PROGRAMMER values(210,'NPR','Gupta','Saurav','1995-01-01','VB',52,'Secret');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into PROGRAMMER values(390,'KCW','Ghosh','Pinky','1993-05-01','JAVA',11,'TopSecret');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into PROGRAMMER values(789,'RNC','Agarwal','Praveen','1998-03-08','VB',11,'Secret');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql>  insert into PROGRAMMER values(134,'TIPPS','Chaudhury','Supriyo','1995-06-15','C++',52,'Secret');
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> insert into PROGRAMMER values(896,'KCW','Jha','Ranjit','1997-07-15','JAVA',10,'TopSecret');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into PROGRAMMER values(345,'TIPPS','John','Peter','1999-11-15','JAVA',52,null);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql>  insert into PROGRAMMER values(563,'NIT','Anderson','Andy','1994-08-15','C++',89,'confidential');
+Query OK, 1 row affected (0.01 sec)
+
+
+
+
+3.
+a.update PROGRAMMER set Projid='NPR' , Language='C++' where FirstName='Saurav';
+b.delete from PROGRAMMER where EmpNo=134.
+c.alter table PROGRAMMER drop column TaskNo;
+
+
+4.create table Department(DeptNO int unique,Dname varchar(20) unique not null,Loc varchar(20) unique not null);
+5. alter table Department modify Dname varchar(50);
+
+
+6.alter table Department modify Dname varchar(50);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+mysql> insert into Department values(10,'ACCOUNTS','NEWYORK');
+Query OK, 1 row affected (0.02 sec)
+
+
+mysql> insert into Department values(20,'MARKETING','CHICAGO');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Department values(30,'SALES','ALANTA');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Department values(40,'RESEARCH','OHIO');
+Query OK, 1 row affected (0.01 sec)
+
+
+7.create table Employee(EmpNo int primary key,Ename varchar(10) not null,Job varchar(10) not null,Sal varchar(10) not null,Hiredate date not null,DeptNo int,foreign key (DeptNo) references Department(DeptNo));
+
+
+8. alter table Employee add column MGR int(4);
+
+
+9. insert into Employee values(7001,'JAMES','CLERK',3000,'2005-05-06',10,null);
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> insert into Employee values(7002,',MASON','PRESIDENT',100000,'2005-06-06',20,null);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Employee values(7003,',CLARK','MANAGER',5000,'2004-05-06',20,null);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Employee values(7004,',JOHN','MANAGER',6000,'2005-08-06',10,null);
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql>  insert into Employee values(7005,',BLAKE','CLERK',3500,'2005-09-06',30,null);
+Query OK, 1 row affected (0.01 sec)
+
+
+10.create table Grade(GradeNo int primary key,Hi_sal bigint not null,Lo_sal bigint not null);
+
+
+11. alter table Grade drop column Lo_sal;
+12.alter table Grade add column Low_sal bigint not null;
+13. insert into Grade values(1,2000,500);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Grade values(2,3500,2100);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Grade values(3,6000,3600);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Grade values(4,15000,6100);
+Query OK, 1 row affected (0.01 sec)
+
+
+14.create table  EMPLOYEE_BACK like Employee;
+
+
+15.update EMPLOYEE_BACK set sal=3500 where Ename='JAMES';
+16. update EMPLOYEE_BACK set sal=sal+1000 where Job='MANAGER';
+
+
+17. update EMPLOYEE_BACK set sal=sal-100 where  DeptNo=10;
+18.alter table EMPLOYEE_BACK add column COMM int;
+19. update EMPLOYEE_BACK set COMM=0;
+
+
+20.delete from Employee where Hiredate<'2005-06-06';
+21. delete from Employee where sal<3000;
+
+
+22.select * from Employee where DeptNo=10;
+
+
+23.select * from Employee where DeptNo=10 AND Job='MANAGER';
+
+
+24.select * from Employee where sal BETWEEN 3000 AND 5000;
+25. select * from Employee where Hiredate>'2005-07-10';
+26. select * from Employee where Job='MANAGER' OR Job='PRESIDENT';
+27. select * from Employee where Job='MANAGER' AND DeptNo=10 OR 20;
+28. update EMPLOYEE_BACK set COMM=500 where DeptNo=10;
+29.select * from EMPLOYEE_BACK where COMM=null;
+30. select * from Employee where not(Job='MANAGER' OR Job='PRESIDENT');
+31. select * from Employee where Ename Like 'J%';
+32. select * from Employee where Ename Like '%A%';
+33. select sal,COMM,bonus from EMPLOYEE_BACK;
+34. select Sal,sal + (sal * 10 / 100) UPDATED_SAL from Employee WHERE Job = 'MANAGER';
+35. update Employee set sal=sal+0.1*sal where Job='MANAGER';
+36. select * from Employee order by Ename desc;
+37. select * from Employee order by DeptNo asc,Job asc;
+39. select lower(Ename) from Employee;
+38. SELECT CONCAT(UCASE(MID(ENAME,1,1)),LCASE(MID(ENAME,2))) AS ENAME FROM employee;
+40. select Ename,position('A' IN Ename) from Employee;
+41. select substr(Ename,-3) from Employee;
+42. select Ename,length(Ename) from Employee;
+43.select sysdate() from dual;
+44.mysql> SELECT ename,hiredate+ INTERVAL+5 YEAR DATE_AFTER_5YR from employee
+    -> where FLOOR(DATEDIFF(LOCALTIME(),hiredate)/365)>5;
+
+
+45.SELECT LAST_DAY(LOCALTIME());
+46.SELECT LAST_DAY(hiredate) from employee;
+47.SELECT ename,hiredate,TIMESTAMPDIFF(MONTH, hiredate, '2008-06-08') TOTAL_MONTH_EXP from employee;
+48.mysql> select ename,sal,if(comm=null,99,comm) comm from employee;
+49.drop table EMPLOYEE_BACK;
+50. select count(*) from Employee where DeptNo=10;
+51.select DeptNo,count(*) from Employee group by DeptNo;
+52.select DeptNo,count(*),Job from Employee group by Job;
+53. select count(*) from Employee;
+54. select Ename from Employee having max(sal);
+55. select Ename from Employee having max(COMM);
+56.select Ename,min(sal) from Employee;
+57. select avg(Sal),DeptNo from Employee group by DeptNo;
+58. select distinct(Job) from Employee;
+59.select DeptNo from Employee group by Job having count(Job)>1;
+60. select sal,DeptNo from Employee group by DeptNo;
+61.
+62.>select job,sal from Employee group by job having count(Job)>5;
+63.SELECT ename,sal,IF(SAL-5000<0, 'CANNOT BE DEDUCTED', 'CAN BE DEDUCTED') DEDUCTION FROM EMPLOYEE;
+64. create table EMPLOYEE_DUP Like Employee;
+65. select * from Employee where DeptNo=(select DeptNo from Employee where Ename='CLARK');
+66.select * from Employee where Sal=(select Sal from Employee where Ename='BLAKE');
+67. select * from Employee where Sal>(select avg(sal) from Employee);
+68.select * from Department where Loc IN ('CHICAGO','NEWYORK');
+69.SELECT *  FROM EMPLOYEE WHERE SAL > ANY(SELECT SAL FROM EMPLOYEE WHERE ENAME = 'BLAKE' OR ENAME = 'CLARK');
+70.SELECT ENAME, SAL+SAL*0.1 FROM EMPLOYEE E INNER JOIN DEPARTMENT D ON E.DEPTNO = D.DEPTNO WHERE D.LOC='CHICAGO';
+71.select * from Employee e  where sal>(select avg(sal) from employee e1 where e1.deptno=e.deptno);
+72.SELECT * FROM EMPLOYEE WHERE DEPTNO NOT IN (SELECT DEPTNO FROM EMPLOYEE WHERE ENAME = 'BLAKE' OR ENAME = 'CLARK');
+73.select e.Ename,e.Deptno,d.Loc from Employee e INNER JOIN Department d where e.Deptno=d.deptno;
+74.CREATE VIEW emp_vw AS select Ename,job,sal from Employee where deptno=10;
+75. CREATE VIEW emp_vw1 AS select Ename,job,sal from Employee where deptno=(select deptno from Department where Loc='CHICAGO');
+76.CREATE VIEW emp_dept AS select e.Ename,e.job,e.sal,d.loc,d.deptNo from Employee e INNER JOIN Department d where e.deptno=d.Deptno;

@@ -1,0 +1,52 @@
+2.
+Maven helps the developer to create a java-based project more easily. Accessibility of new features created or added in Maven can be easily added to a project in Maven configuration. It increases the performance of the project and building process.
+The main feature of Maven is that it can download the project dependency libraries automatically.
+ 
+3.
+a.POM Files: Project Object Model (POM) files are XML files that include information about the project and configuration information used by Maven to construct the project, such as dependencies, source directory, plugin, goals, and so on.
+b.Dependencies and Repositories: Repositories are folders containing bundled JAR files, and dependencies are external Java libraries necessary for Project. 
+c.Build Life Cycles, Phases, and Goals: A build life cycle is made up of a series of build phases, each of which contains a set of goals. A build lifecycle, phase, or goal is referred to as a Maven command.
+Build Profiles: Build Profiles are a set of configuration parameters that allow you to build your project using a variety of setups. For example, you might need to develop and test your project on your local computer. You can add different build profiles to your POM files using its profile elements to enable different builds, which can be triggered in a variety of ways.
+d.Build Plugins: Build Plugins are used to accomplish a certain task. A plugin can be added to the POM file. Maven comes with various pre-installed plugins, but you can also write your own in Java.
+ 
+4.
+POM is an acronym for Project Object Model. The pom.xml file contains information of project and configuration information for the maven to build the project such as dependencies, build directory, source directory, test source directory, plugin, goals etc.
+ 
+Maven reads the pom.xml file, then executes the goal. Before maven 2, it was named as a project.xml file. But, since maven 2 (also in maven 3), it is renamed as pom.xml. 
+ 
+5.
+validate
+generate-sources
+process-sources
+generate-resources
+process-resources
+compile
+process-classes
+generate-test-sources
+process-test-sources
+generate-test-resources
+process-test-resources
+test-compile
+test
+prepare-package (maven 2.1+)
+package
+pre-integration-test
+integration-test
+post-integration-test
+verify
+install
+deploy
+6.
+Maven repositories are of three types. The following illustration will give an idea regarding these three types.
+local
+central
+remote
+7.
+Candidate key-it is a minimal set of super key.A candidate key should not have a subset as another super key.
+Primary key:Here from the candidate key DBA will choose a PK, generally it will be the minimum number of attributes declared as PK.some time we can make other than minimum value attribute also as a PK (composite key)
+Prime attribute:Those attributes that are part of any candidate key are called prime attributes and those attributes which are not part of any candidate key are known as non-prime attributes.
+Non prime attribute:Non prime attributes also called Non Key attributes. [ID] : Every individual will have a unique ID so it is a prime attribute.
+8.
+1NF-table should not contain any multi valued attributes(comma/space separated values)each cell should contain only atomic values a table should not have the repeating columns.
+2NF-2nF applies in a table which is having a composite key, i.e a table with a PK compound with two or more attribute.Note: a table with a single column PK is automatically in 2NF.To be in 2nF, a table must be in 1stNF  and the table must not contains any partial dependency.
+3NF-relation will be in 3NF if only:1.it should be in 2NF.2.there should not be any TD.

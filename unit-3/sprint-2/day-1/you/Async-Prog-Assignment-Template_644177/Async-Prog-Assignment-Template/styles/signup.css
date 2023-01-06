@@ -1,0 +1,33 @@
+#signup-form-div{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: auto;
+    width:250px;
+}
+input{
+    display:block;
+    margin-bottom: 10px;
+}
+#nav{
+    border:1px solid red;
+    height:100px;
+    display: flex;
+    justify-content: space-between;
+    /* height:200px; */
+    /* height: 200px; */
+    background-color: teal;
+}
+#nav>div:last-child{
+    border: 1px solid red;
+    width:20%;
+
+    display: flex;
+    justify-content: space-around;
+    
+}
+#nav>div:first-child{
+    padding-top: 20px;
+}
+a{
+    margin-top: 60px;
+    text-decoration: none;
+}

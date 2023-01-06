@@ -1,0 +1,13 @@
+Early Bindng-
+a.Also knowN as Static binding.
+b.It happens at Compile time by JVM.
+c.It is not Flexible.
+d.Execution is faster.
+Ex=overloaded method,normal method,static polymorphism..etc
+
+Late Binding-
+a.Also known as Dynamic Binding.
+b.it happens at Run time by JVM.
+c.It is Flexible as a single method can be used by different objects.
+d.Execution is slower.
+ex=Method overloading,dynamic polymorphism..etc

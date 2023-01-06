@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: purple;
+        }
+        #work{
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: repeat(1,200px);
+            gap: 20px;
+            margin: auto;
+            /* margin-top: 15%; */
+            border: 1px solid transparent;
+            width:48%;
+            
+        }
+        #work>div{
+            border: 1px solid red;
+            text-align: center;
+        }
+        #head>h1{
+            text-align: center;
+        }
+        #btn{
+            margin-left: 48%;
+            margin-top: 20px;
+        }
+        #baxa{
+            width:20%;
+            margin: auto;
+            margin-top: 250px;
+            /* background-color: white; */
+            
+        }
+        #head{
+            margin-top: -150px;
+            border: 1px solid transparent;
+            /* color:white; */
+          
+        }
+        #query{
+            background-color: white;
+            /* color: white; */
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="baxa">
+        <h1>STAR WARS</h1>
+        <input oninput="debounce(main,2000)" id="query"type="text">
+        <div id="container">
+    
+        </div>
+    </div>
+   <div id="head">
+    <div id="work"></div>
+    
+</div>
+  
+</body>
+</html>
+<script>
+    async function main(){
+        let query=document.querySelector("#query").value
+        let x=await hello(query)
+        append1(x)
+    }
+
+
+   
+    async function hello(query){
+        let url=`https://swapi.dev/api/people/?search=${query}&format=json`
+        let res=await fetch(url)
+        let data=await res.json()
+      return data.results
+
+    }
+    hello()
+    function append1(x){
+        let container=document.querySelector("#container")
+        container.innerHTML=""
+        
+        console.log(x)
+        
+        x.forEach(function(el){
+            let div=document.createElement("div")
+            div.addEventListener("click", function(){
+                append(el)
+            })
+            let p1=document.createElement("p")
+            p1.innerText=el.name
+            let p2=document.createElement("p")
+            p2.innerText=el.birth_year
+         div.append(p1,p2)
+         container.append(div)
+        })
+    }
+    // function on(el){
+    //     localStorage.setItem("data", JSON.stringify(el))
+    // }
+    function append(el){
+document.querySelector("#baxa").innerHTML=""
+let head=document.querySelector("#head")
+        let container=document.querySelector("#work")
+   container.innerHTML=""
+   let h1=document.createElement("h1")
+   h1.innerText=el.name
+//    console.log(el.name)
+        let div1=document.createElement("div")
+       let y= document.createElement("h2")
+       y.innerText="Personal info"
+        let p1=document.createElement("p")
+        p1.innerText=`Birth-Year-${el.birth_year}`
+        let p2=document.createElement("p")
+        p2.innerText=`Gender-${el.gender}`
+        let p3=document.createElement("p")
+        p3.innerText=`Height-${el.height}`
+        let div2=document.createElement("div")
+        let y1= document.createElement("h2")
+       y1.innerText="Anatomy"
+        let p4=document.createElement("p")
+        p4.innerText=`Eyecolor-${el.eye_color}`
+        let p5=document.createElement("p")
+        p5.innerText=`Mass-${el.mass}`
+        let p6=document.createElement("p")
+        p6.innerText=`Haircolor-${el.hair_color}`
+        let btn=document.createElement("button")
+        btn.setAttribute("id","btn")
+        btn.addEventListener("click",function(){
+            window.location.reload()
+        })
+        btn.innerText="Go Back"
+        div1.append(y,p1,p2,p3)
+        div2.append(y1,p4,p5,p6)
+        container.append(div1,div2)
+        head.append(h1,container,btn)
+    }
+    let id
+    function debounce(func,delay){
+        if(id){
+            clearTimeout(id)
+        }
+     id=setTimeout(function(){
+            func()
+        },delay)
+    }
+</script>

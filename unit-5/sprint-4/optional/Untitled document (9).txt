@@ -1,0 +1,360 @@
+﻿ONE TO MANY RELATIONSHIP:
+
+
+
+
+ create table Department(did int primary key,dname varchar(12),location varchar(12));
+mysql> create table Employee(empid int,ename varchar(12),address varchar(12),mobile varchar(12),deptid int,foreign key (deptid) references Department(did));
+
+
+
+
+
+
+
+
+Question 1.
+
+
+public class Que1 {
+
+
+        public static void main(String[] args) {
+                Scanner sc=new Scanner(System.in);
+        System.out.println("give did");
+        int d=sc.nextInt();
+        System.out.println("Give dname");
+        String s=sc.next();
+        System.out.println("Give Location");
+        String loc=sc.next();
+                
+                // TODO Auto-generated method stub
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+    String url="jdbc:mysql://localhost:3306/sqlday5";
+
+
+    try (Connection conn=DriverManager.getConnection(url, "root", "ak@25");){
+           
+            PreparedStatement ps= conn.prepareStatement("insert into Department values(?,?,?)");
+            
+            ps.setInt(1, d);        
+                ps.setString(2, s);
+                ps.setString(3, loc);
+                
+                
+                
+                
+                int x= ps.executeUpdate();        
+                 
+                if(x > 0)
+                        System.out.println("Record Inserted Sucessfully");
+                else
+                        System.out.println("Not inserted...");
+                 
+            
+
+
+    } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+
+
+        }
+
+
+}
+
+
+
+
+QUESTION 2
+
+
+public class Que1 {
+
+
+        public static void main(String[] args) {
+                Scanner sc=new Scanner(System.in);
+        System.out.println("give empid");
+        int d=sc.nextInt();
+        System.out.println("Give ename");
+        String s=sc.next();
+        System.out.println("Give address");
+        String loc=sc.next();
+        System.out.println("give mobile");
+        String m=sc.next();
+        System.out.println("give deptid");
+        int dp=sc.nextInt();
+        
+                
+                // TODO Auto-generated method stub
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+    String url="jdbc:mysql://localhost:3306/sqlday5";
+
+
+    try (Connection conn=DriverManager.getConnection(url, "root", "ak@25");){
+           
+            PreparedStatement ps= conn.prepareStatement("insert into Employee values(?,?,?,?,?)");
+            
+            ps.setInt(1, d);        
+                ps.setString(2, s);
+                ps.setString(3, loc);
+                ps.setString(4,m);
+                ps.setInt(5, dp);
+                
+                
+                
+                
+                int x= ps.executeUpdate();        
+                 
+                if(x > 0)
+                        System.out.println("Record Inserted Sucessfully");
+                else
+                        System.out.println("Not inserted...");
+                 
+            
+
+
+    } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+
+
+        }
+
+
+}
+ 
+
+
+QUESTION 3
+
+
+public class Que1 {
+
+
+        public static void main(String[] args) {
+//                Scanner sc=new Scanner(System.in);
+//        System.out.println("give empid");
+//        int d=sc.nextInt();
+//        System.out.println("Give ename");
+//        String s=sc.next();
+//        System.out.println("Give address");
+//        String loc=sc.next();
+//        System.out.println("give mobile");
+//        String m=sc.next();
+//        System.out.println("give deptid");
+//        int dp=sc.nextInt();
+        
+                
+                // TODO Auto-generated method stub
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+    String url="jdbc:mysql://localhost:3306/sqlday5";
+
+
+    try (Connection conn=DriverManager.getConnection(url, "root", "ak@25");){
+           
+            PreparedStatement ps= conn.prepareStatement("select empid,ename,address,mobile,deptid from Employee where deptid=(select did from department where dname='java')");
+                 
+                ResultSet rs = ps.executeQuery();        
+                 
+                
+                while(rs.next()) {
+                        
+                        
+                        int r= rs.getInt("empid");
+                        String n= rs.getString("ename");
+                        String as=rs.getString("address");
+                        String mob=rs.getString("mobile");
+                        int m= rs.getInt("deptid");
+                        
+                        
+                        System.out.println("empid is :"+r);
+                        System.out.println("ename is :"+n);
+                        System.out.println("address is :"+as);
+                        System.out.println("mobile is :"+mob);
+                        System.out.println("deptid is :"+m);
+                        
+                        System.out.println("=============================");
+                        
+                }
+                                 
+                }catch(SQLException e) {
+                        
+                        e.printStackTrace();
+                        System.out.println(e.getMessage());
+                }
+                
+                
+        }
+                
+        
+
+
+
+
+        }
+
+
+
+
+         QUESTION 5
+  
+
+
+public class Que1 {
+
+
+        public static void main(String[] args) {
+//                Scanner sc=new Scanner(System.in);
+//        System.out.println("give empid");
+//        int d=sc.nextInt();
+//        System.out.println("Give ename");
+//        String s=sc.next();
+//        System.out.println("Give address");
+//        String loc=sc.next();
+//        System.out.println("give mobile");
+//        String m=sc.next();
+//        System.out.println("give deptid");
+//        int dp=sc.nextInt();
+        
+                
+                // TODO Auto-generated method stub
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+    String url="jdbc:mysql://localhost:3306/sqlday5";
+
+
+    try (Connection conn=DriverManager.getConnection(url, "root", "ak@25");){
+           
+            PreparedStatement ps= conn.prepareStatement("select E.ename,D.location,D.did from Employee E INNER JOIN department D ON E.deptid=D.did AND D.location='mumbai'");
+                 
+                ResultSet rs = ps.executeQuery();        
+                 
+                
+                while(rs.next()) {
+                        
+                        
+//                        int r= rs.getInt("empid");
+                        String n= rs.getString("E.ename");
+                        String as=rs.getString("D.location");
+//                        String mob=rs.getString("mobile");
+                        int m= rs.getInt("D.did");
+                        
+                        
+//                        System.out.println("empid is :"+r);
+                        System.out.println("ename is :"+n);
+                        System.out.println("location is :"+as);
+//                        System.out.println("mobile is :"+mob);
+                        System.out.println("did is :"+m);
+                        
+                        System.out.println("=============================");
+                        
+                }
+                                 
+                }catch(SQLException e) {
+                        
+                        e.printStackTrace();
+                        System.out.println(e.getMessage());
+                }
+                
+                
+        }
+                
+QUESTION 4
+
+
+        
+public class Que1 {
+
+
+        public static void main(String[] args) {
+                Scanner sc=new Scanner(System.in);
+        System.out.println("give did to delete ");
+        int did=sc.nextInt();
+//        System.out.println("Give ename");
+//        String s=sc.next();
+//        System.out.println("Give address");
+//        String loc=sc.next();
+//        System.out.println("give mobile");
+//        String m=sc.next();
+//        System.out.println("give deptid");
+//        int dp=sc.nextInt();
+        
+                
+                // TODO Auto-generated method stub
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+
+
+    String url="jdbc:mysql://localhost:3306/sqlday5";
+
+
+    try (Connection conn=DriverManager.getConnection(url, "root", "ak@25");){
+           
+            PreparedStatement ps= conn.prepareStatement("Delete from department where did=?");
+                 
+//                ResultSet rs = ps.executeQuery();        
+                 
+ps.setInt(1, did);        
+                
+                int x= ps.executeUpdate();        
+                 
+                if(x > 0)
+                        System.out.println(x+ " Record deleted Sucessfully");
+                else
+                        System.out.println("Record does not exist.");
+                
+                                 
+                }catch(SQLException e) {
+                        
+                        e.printStackTrace();
+                        System.out.println(e.getMessage());
+                }
+                
+                
+        }
+                
+        
+
+
+
+
+        }

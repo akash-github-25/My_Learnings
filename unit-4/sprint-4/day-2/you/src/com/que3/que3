@@ -1,0 +1,12 @@
+Autoboxing and autounboxing:
+From java 1.5 onwords  we have a concept called autoboxing and autounboxing
+
+int i =20;
+
+Integer i1 = i;  //autoboxing
+
+int x=i1; // autounboxing
+
+Inautoboxing and unboxing we can directly convert a primitive datatype variable into refrence variable
+withgout using any method.
+

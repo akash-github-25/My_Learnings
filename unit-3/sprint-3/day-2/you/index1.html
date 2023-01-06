@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+     class assign{
+        constructor(){
+            this.length=0
+            this.stack=[]
+        }
+        enqueue(...arr){
+    arr.forEach((el)=>{
+        let index = this.length
+this.stack[index]=el
+this.length++
+    })
+        }
+
+        // dequeue(){
+        //     let index=0
+        //     this.stack.splice(0,3)
+        //     // delete this.stack[index];
+        //     // delete this.stack[index];
+        //     // index--
+        //     // this.stack.length--;
+        //     this.length--;
+            
+
+ deQueue(){
+let a=[];
+let bag="";
+  let start=1;
+  let end=this.stack.length;
+//   if(m==undefined){
+//     m=this.stack.length;
+//   }
+if(this.stack.length<3 && this.stack.length!=0){
+    return []
+}else if(this.stack.length==0){
+    return "error"
+}
+  
+for(let i=start;i<end;i++){
+    bag=bag+this.stack[i];
+  a.push(this.stack[i]);
+    }   
+  return a
+}
+deQueueThree(){
+let a=[];
+let bag="";
+  let start=3;
+  let end=this.stack.length;
+//   if(m==undefined){
+//     m=this.stack.length;
+//   }
+if(this.stack.length<3 && this.stack.length!=0){
+    return []
+}else if(this.stack.length==0){
+    return "error"
+}
+  
+for(let i=start;i<end;i++){
+    bag=bag+this.stack[i];
+  a.push(this.stack[i]);
+    }   
+  return a
+}
+enqueueThree(...arr1){
+
+    arr1.forEach((el)=>{
+        let index = this.stack.length
+this.stack[index]=el
+this.length++
+    })
+}
+     }
+     
+     
+// myslice(2,);
+
+        
+    
+    let s1=new assign()
+    s1.enqueue(2,3,4,5)
+    // console.log(s1)
+  let t=  s1.deQueue()
+    // s1.dequeue()
+    // console.log(t)
+    let s=s1.deQueueThree()
+    // console.log(s)
+    // let s2=new assign()
+    s1.enqueueThree(1,2,3)
+    console.log(s1)
+    
+
+</script>

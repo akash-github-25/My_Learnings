@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="s1" class="com.que5.Department" >
+<constructor-arg name="deptId" value="1" />
+<constructor-arg name="deptName" value="sales" />
+<constructor-arg name="location" value="kolkata" />
+</bean>
+<bean id="s2" class="com.que5.Department" >
+<constructor-arg name="deptId" value="2" />
+<constructor-arg name="deptName" value="Marketing" />
+<constructor-arg name="location" value="Mumbai" />
+</bean>
+<bean id="s3" class="com.que5.Department" >
+<constructor-arg name="deptId" value="3" />
+<constructor-arg name="deptName" value="Accounts" />
+<constructor-arg name="location" value="Cheenai" />
+</bean>
+
+<bean id="e1" class="com.que5.Employee" >
+<constructor-arg name="empId" value="1" />
+<constructor-arg name="empName" value="Akash" />
+<constructor-arg name="address" value="Kolkata" />
+<constructor-arg name="salary" value="2000" />
+</bean>
+<bean id="e2" class="com.que5.Employee" >
+<constructor-arg name="empId" value="2" />
+<constructor-arg name="empName" value="Rohit" />
+<constructor-arg name="address" value="Mumbai" />
+<constructor-arg name="salary" value="1500" />
+</bean>
+<bean id="e3" class="com.que5.Employee" >
+<constructor-arg name="empId" value="3" />
+<constructor-arg name="empName" value="Dhoni" />
+<constructor-arg name="address" value="Cheenai" />
+<constructor-arg name="salary" value="1900" />
+</bean>
+
+<bean id="d" class="com.que5.Demo" init-method="myInit" destroy-method="cleanUp" lazy-init="true">
+<property name="theMap">
+<map>
+<entry key-ref="s1" value-ref="e1"/>
+<entry key-ref="s2" value-ref="e2"/>
+<entry key-ref="s3" value-ref="e3"/>
+</map>
+</property>
+</bean>
+
+
+</beans>

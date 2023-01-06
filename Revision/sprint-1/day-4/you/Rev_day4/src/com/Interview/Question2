@@ -1,0 +1,6 @@
+1.Whenever we declare an array in java we have to provide its size while that is not in
+ the case of collections.
+ 2.It provides extra performance.
+ 3.It is reuseable.
+ 4.For doing different work we have different collections in java so it is easy to use.
+ 

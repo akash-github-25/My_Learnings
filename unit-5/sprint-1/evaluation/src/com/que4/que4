@@ -1,0 +1,25 @@
+public class CheckOutput {
+public static void main(String args[])
+{
+try
+{
+System.out.print("A");
+int num = 99/0;
+System.out.print("B");
+}
+catch(ArithmeticException ex)
+{
+System.out.print("C");
+}
+catch(Exception ex)
+{
+System.out.print("D");
+}
+System.out.print("E");
+}
+}
+
+
+ans=Here the output is ACE.On the first case A will be printed then in the next line an
+Arithematic Exception is occured so it will move to the exception and print C then E will be
+printed because once it moved to the catch block then other statement of try block will not be executed.

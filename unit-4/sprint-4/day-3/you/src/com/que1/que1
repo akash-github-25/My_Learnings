@@ -1,0 +1,10 @@
+ArrayList:-
+a.It is slower than LinkedList.
+b.It implements only List.
+c.It uses array to store its data.
+
+LinkedList:-
+a.It is faster than ArrayList.
+b.It implements both List and Queue.
+c.It uses Doubly LinkedList to store data.
+

@@ -1,0 +1,33 @@
+Thread pool is a pool of already created threads ready to do our tasks.
+Thread pool framework is also known as executor framework. this concept is 
+introduced in java5.
+Thread pool related API comes in the form of java.util.concurrent package.
+
+ExecutorService service = Executors.newFixedThreadPool(4);
+
+
+
+Callable interface
+A callable interface throws the checked exception and returns the result.
+ A runnable interface, on the other hand, shows the result or throws an exception,
+  but does not do both.
+
+Syntax
+public interface Callable<T> 
+{
+  T call() throws exception ;
+  }
+  
+  
+  Runnable  interface
+  It is required to create a thread when a runnable interface is implemented through an object.
+
+The thread contains a single method named run() that does not return any value or accept any parameters.
+
+Syntax
+public interface Runnable 
+{
+  public abstract void run();
+}
+  
+  

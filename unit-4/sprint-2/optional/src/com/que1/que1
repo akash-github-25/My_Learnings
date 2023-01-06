@@ -1,0 +1,19 @@
+Q1)  Is there any difference between creating a string with and without a new operator?  
+        Explain with an example.?
+        
+ ans->
+ WITHOUT NEW OPERATOR=>If we create string without new operator it will form only one object in RAM
+ and it points to the content.
+ 
+ WITH NEW OPERATOR=>If we create string with new operator it will form two object in RAM
+ and it points to the address of the object.
+ 
+ ex->
+ String s1 = new String("akash");
+		
+		String s2 = "akash";
+		String s3 = "akash";
+		
+		System.out.println(s1.equals(s2));-> true.
+		System.out.println(s1 == s2);-> false.
+ 

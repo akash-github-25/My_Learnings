@@ -1,0 +1,11 @@
+ArrayList-
+a.Not necessary need to give size while creating it.
+b.Size is dynamic.
+c.it is slow;
+d.we need iterator to iterate.
+
+Array-
+a.Need to give size while creating.
+b.size is static.
+c.it is fast.
+d.we need for loop or forEach loop to iterate.

@@ -1,0 +1,13 @@
+Abstract class:-
+a.Partially implemented Structure.
+b.it has a constructor.
+c.Here extends is used.
+d.here we have access modifier public, private,..etc.
+e.it doesn't supports multi-threading.
+
+Interface:-
+a.Fully implemented Structure.
+b.it does'nt has a constructor.
+c.Here implements is used.
+d.here we have access modifier as public by default.
+e.it  supports multi-threading.

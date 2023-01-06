@@ -1,0 +1,9 @@
+Checked Exception:
+1.It cannot be ignored by compiler while writing the code.
+2.It relates to all Exception class except Run Time Exception.
+3.ex-ClassCastException,SQL Exception..etc.
+
+Unchecked Exception:
+1.It can be ignored by compiler while writing the code.
+2.It relates to Run Time Exception Class.
+3.ex-NullPointerException,Arithematic Exception..etc.

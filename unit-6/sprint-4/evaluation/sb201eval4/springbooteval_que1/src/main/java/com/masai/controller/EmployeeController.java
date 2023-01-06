@@ -1,0 +1,97 @@
+package com.masai.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.masai.bean.Employee;
+import com.masai.bean.EmployeeDTO;
+import com.masai.exception.EmployeeException;
+import com.masai.model.EmployeeService;
+import com.masai.model.LoginEmp;
+
+@RestController
+public class EmployeeController {
+	
+  @Autowired
+  public EmployeeService ss;
+  @PostMapping("/employee")
+  public ResponseEntity<Employee> saveEmployee(@RequestBody Employee emp) throws EmployeeException {
+	 
+	 return new ResponseEntity<>(ss.registerEmployee(emp),HttpStatus.CREATED);
+  };
+  
+  @GetMapping("/getEmployee/{empId}")
+  public Employee getStudentByRoll(@PathVariable int empId) throws EmployeeException {
+  return ss.getEmployeeById(empId);
+  }
+  @GetMapping("/getAllEmployee")
+  public List<Employee> getAllEmployee() throws EmployeeException{
+  
+  return ss.getAllEmployeeDetails();
+  }
+  
+  @DeleteMapping("/deleteEmployee/{empId}")
+  public Employee deleteStudentByRoll(@PathVariable int empId) throws EmployeeException {
+ return ss.deleteEmployeeById(empId);
+  }
+  @PostMapping("/updateEmployee")
+  public ResponseEntity<Employee> updateEmployee(@RequestBody Employee emp) throws EmployeeException {
+  
+	  return new ResponseEntity<>(ss.updateEmployee(emp),HttpStatus.CREATED);
+ 
+  }
+  
+  @GetMapping("/getNameAndAddressByEmpid/{empId}")
+  public String getStudentNameAndMarksByMarks(@PathVariable int empId) throws EmployeeException {
+  String result=ss.getNameAndAddressOfEmplyeeById(empId);
+  if(result.length() == 0) {
+  throw new EmployeeException("Employee does not exist with the empId "+empId);
+  }
+  else
+  return result;
+  }
+  
+  @PostMapping(value="/login")
+  public ResponseEntity<Employee> loginEmployee(@RequestBody LoginEmp lb) throws EmployeeException{
+  	Employee f=ss.loginEmployee(lb.getEmail(), lb.getPassword());
+//  	return new ResponseEntity<String>(f,HttpStatus.OK);
+  	return new ResponseEntity<Employee>(f,HttpStatus.OK);
+  	
+  }
+  @GetMapping("/getNameAddressSalary")
+  public ResponseEntity<List<EmployeeDTO>> getNameAddressSalary() throws EmployeeException {
+	  List<EmployeeDTO> f=ss.getNameAddressSalaryOfAllEmployee();
+	  
+		  return new ResponseEntity<List<EmployeeDTO>>(f,HttpStatus.OK);
+	
+	  
+  }
+  @GetMapping("/getdetailsbyAddress/{address}")
+  public ResponseEntity<List<Employee>> getEmployeedetailsByAddress(@PathVariable String address) throws EmployeeException{
+	List<Employee> g=ss.getEmployeeDetailsByAddress(address);
+	if(g.size()!=0) {
+		return new ResponseEntity<List<Employee>>(g,HttpStatus.OK);
+	}
+	  
+	  return null;
+	  
+  }
+  
+  
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

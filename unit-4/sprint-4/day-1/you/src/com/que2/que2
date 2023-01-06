@@ -1,0 +1,4 @@
+Multiple inheritence is not possible in java at class level but we can have it at interface level.
+for ex-let A and B be a class that overrides a method of class C if suppose there is another class D it is 
+extending both class A and B now if it also has to use the same method then which class override method it is going to use,hence it 
+will create ambiguity.

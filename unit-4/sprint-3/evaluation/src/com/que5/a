@@ -1,0 +1,13 @@
+interface A{
+int i = 111;
+}
+class B implements A{
+void methodB(){
+i = 222;
+}
+}
+
+
+Here we won't be able to update the value of i in the B class because once we define a variable in 
+interface it is by default public final so we won't to be able to update it anywhere,we have to intialize it 
+at the interface only.

@@ -1,0 +1,15 @@
+package com.masai.service;
+
+import java.util.List;
+
+import com.masai.bean.Email;
+import com.masai.bean.User;
+
+public interface UserService {
+	
+	public User addUser(User user);
+	public User deleteCustomer(Integer userId);
+	public User viewUser(Integer userId);
+	public List<User> viewAllBooking();
+	public Email addEmail(Email email);
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="name">
+        <input type="number" id="number">
+        <select name="" id="select">
+            <option value="">choose</option>
+            <option value="car">car</option>
+            <option value="bus">bus</option>
+            <option value="bike">Bike</option>
+        </select>
+        <input type="submit" placeholder="submit">
+    </form>
+    <h1 id="slots">slots avilable</h1>
+    <div id="container"></div>
+</body>
+
+</html>
+<script>
+
+    class vehicle {
+        #type;
+        #color;
+        #regNumber;
+        constructor(type, color, num) {
+            this.#type = type
+            this.#color = color
+            this.#regNumber = num
+        }
+
+        get regNumber() {
+            return `MH ${this.#regNumber}`
+        }
+        get type() {
+            return this.#type
+        }
+    }
+
+    class Car extends vehicle {
+        constructor(color, num) {
+            super("Car", color, num)
+        }
+    }
+
+    class Bike extends vehicle {
+        constructor(color, num) {
+            super("Bike", color, num)
+        }
+    }
+    class Bus extends vehicle {
+        constructor(color, num) {
+            super("Bus", color, num)
+        }
+    }
+
+    // let car1=new Car("black",1234)
+    // console.log(car1.regNumber)
+
+    class ParkingLot {
+
+        #floors;
+
+        constructor(number) {
+
+            this.#floors = []
+            this.numberofFloors = number
+            for (let i = 0; i < number; i++) {
+                this.#floors[i] = new ParkingFloor(i, number)
+            }
+        }
+        findSlot(type) {
+            for (let i = 0; i < this.numberofFloors; i++) {
+
+                for (let slot of this.#floors[i].parkingSpots) {
+                    // console.log(slot.type,type)
+                    // console.log(isBooked)
+                    if (slot.type === type && !slot.isBooked) {
+                        // document.querySelector("#slots").innerText="slots avilable"
+                        alert("booking done")
+                        if(i== this.numberofFloors-1 ){
+                            document.querySelector("#slots").innerText="slots unavilable"
+                        }
+                        return { floornumber: i, slot: slot }
+                    }
+                    //    }else{
+                    //     alert("booked")
+                    //    }
+                }
+            }
+            return false;
+        }
+        parkVehicle(vehicle) {
+            let slot = this.findSlot(vehicle.type)
+            if (slot == false) {
+                
+                alert("full")
+            } else {
+                slot.slot.book = true
+            }
+        }
+    }
+    class ParkingFloor {
+
+        #floornumber;
+        constructor(floornumber, maxFloor) {
+            this.#floornumber = floornumber
+            this.parkingSpots = []
+
+            for (let i = 0; i < maxFloor; i++) {
+                if (i === 0) {
+                    this.parkingSpots.push(new Slot("Bus", i))
+                } else if (i === 1) {
+                    this.parkingSpots.push(new Slot("Bike", i))
+                } else {
+                    this.parkingSpots.push(new Slot("Car", i))
+                }
+            }
+        }
+    }
+    class Slot {
+
+        #isBooked
+        constructor(type, number) {
+            this.number = number;
+            this.type = type;
+            this.#isBooked = false
+        }
+        get isBooked() {
+            return this.#isBooked
+        }
+        set book(bool) {
+            this.#isBooked = bool
+        }
+    }
+
+    document.querySelector("form").addEventListener("submit", on)
+
+    function on(event) {
+        event.preventDefault()
+
+        let p = new ParkingLot(3)
+        let select = document.querySelector("#select").value
+        if (select == "car") {
+            car();
+        } else if (select == "bus") {
+            bus()
+        } else if (select == "bike") {
+            bike()
+        }
+
+
+    }
+    function car() {
+        document.querySelector("#slots").innerText="slots avilable for car"
+        let name = document.querySelector("#name").value
+        let number = document.querySelector("#number").value
+        let arr = []
+        arr.push(new Car(name, number))
+        display(arr)
+
+    }
+    function bus() {
+        document.querySelector("#slots").innerText="slots avilable for bus"
+        let name = document.querySelector("#name").value
+        let number = document.querySelector("#number").value
+        let arr = []
+        arr.push(new Bus(name, number))
+        display(arr)
+    }
+    function bike() {
+        document.querySelector("#slots").innerText="slots avilable for bike"
+        let name = document.querySelector("#name").value
+        let number = document.querySelector("#number").value
+        let arr = []
+        arr.push(new Bike(name, number))
+        display(arr)
+    }
+
+    let p = new ParkingLot(3)
+    function display(arr) {
+
+        arr.forEach((el, index) => {
+            console.log(el)
+            console.log(el.color)
+            let tr = document.createElement("div")
+            let td1 = document.createElement("h1")
+            td1.innerText = el.type
+            let td2 = document.createElement("h1")
+            td2.innerText = el.regNumber
+            let td3 = document.createElement("button")
+            td3.innerText = "book ticket"
+            td3.addEventListener("click", function () {
+
+                p.parkVehicle(el)
+                console.log(p)
+            })
+            tr.append(td1, td2, td3)
+            document.querySelector("#container").append(tr)
+        })
+    }
+
+</script>

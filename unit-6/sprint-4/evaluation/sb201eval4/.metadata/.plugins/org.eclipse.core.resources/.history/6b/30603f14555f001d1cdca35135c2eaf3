@@ -1,0 +1,82 @@
+package com.masai.model;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.bean.Account;
+import com.masai.bean.AccountDTO;
+//import com.masai.bean.Employee;
+import com.masai.exception.AccountException;
+//import com.masai.exception.EmployeeException;
+import com.masai.exception.InsufficientFundException;
+import com.masai.repository.AccountRepo;
+@Service
+public class AccountServiceImpl implements AccountService {
+	@Autowired
+   public AccountRepo ar;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Account openAccount(Account acc) throws AccountException {
+		// TODO Auto-generated method stub
+		Account d=ar.save(acc);
+		if(d!=null) {
+			return d;
+		}else {
+			throw new AccountException("Account cannot be added");
+		}
+	}
+
+	@Override
+	public Account closeAccount(Integer accno) throws AccountException {
+		// TODO Auto-generated method stub
+		Optional<Account> d=ar.findById(accno);
+		if(d.isPresent()) {
+		ar.deleteById(accno);
+		return d.get();
+		}else {
+			throw new AccountException("Account not present with that accno");
+		}
+	}
+
+	@Override
+	public Account depositAmount(Integer accno, Integer amount) throws AccountException {
+		// TODO Auto-generated method stub
+		Optional<Account> d=ar.findById(accno);
+		if(d.isPresent()) {
+			Account a=d.get();
+			a.setBalance(a.getBalance()+amount);
+			ar.save(a);
+			return a;
+		}else {
+			throw new AccountException("Account not present with that accno");
+		}
+		
+	}
+
+	@Override
+	public Account withdrawAmount(int accno, Integer amount) throws AccountException, InsufficientFundException {
+		// TODO Auto-generated method stub
+		Optional<Account> d=ar.findById(accno);
+		if(d.isPresent()) {
+			Account a=d.get();
+			a.setBalance(a.getBalance()-amount);
+			ar.save(a);
+			return a;
+		}else {
+			throw new AccountException("Account not present with that accno");
+		}
+	}
+
+	@Override
+	public String transferAmount(AccountDTO dto) throws AccountException, InsufficientFundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

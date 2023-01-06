@@ -1,0 +1,569 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database sb101sqlassign;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table DEPOSIT(ACTNO varchar(25),CNAME varchar(20),BNAME varchar(20),AMOUNT int,ADATE date);
+ERROR 1046 (3D000): No database selected
+mysql> use sb101sqlassign;
+Database changed
+mysql> create table DEPOSIT(ACTNO varchar(25),CNAME varchar(20),BNAME varchar(20),AMOUNT int,ADATE date);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table BRANCH(BNAME varchar(20),CITY varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table CUSTOMER(CNAME varchar(20),CITY varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table BORROW(LOANNO varchar(5),CNAME varchar(20),BNAME varchar(20),AMOUNT int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc DEPOSIT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| ACTNO  | varchar(25) | YES  |     | NULL    |       |
+| CNAME  | varchar(20) | YES  |     | NULL    |       |
+| BNAME  | varchar(20) | YES  |     | NULL    |       |
+| AMOUNT | int         | YES  |     | NULL    |       |
+| ADATE  | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc BRANCH;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| BNAME | varchar(20) | YES  |     | NULL    |       |
+| CITY  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc CUSTOMER;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| CNAME | varchar(20) | YES  |     | NULL    |       |
+| CITY  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc BORROW;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| LOANNO | varchar(5)  | YES  |     | NULL    |       |
+| CNAME  | varchar(20) | YES  |     | NULL    |       |
+| BNAME  | varchar(20) | YES  |     | NULL    |       |
+| AMOUNT | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,01-MAR-95);
+ERROR 1054 (42S22): Unknown column 'MAR' in 'field list'
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,'01-MAR-95');
+ERROR 1292 (22007): Incorrect date value: '01-MAR-95' for column 'ADATE' at row 1
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,'01-MAR-1995');
+ERROR 1292 (22007): Incorrect date value: '01-MAR-1995' for column 'ADATE' at row 1
+mysql>
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,01-MARCH-1995);
+ERROR 1054 (42S22): Unknown column 'MARCH' in 'field list'
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,DATE_FORMAT(01-MAR-1995));
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'DATE_FORMAT'
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,1995-03-01);
+ERROR 1292 (22007): Incorrect date value: '1991' for column 'ADATE' at row 1
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,01-03-1995);
+ERROR 1292 (22007): Incorrect date value: '-1997' for column 'ADATE' at row 1
+mysql> insert into DEPOSIT  values(100,'ANIL','VRCE',1000,1995-1-03);
+ERROR 1292 (22007): Incorrect date value: '1991' for column 'ADATE' at row 1
+mysql> insert into  BRANCH values('VRCE','NAGPUR');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  BRANCH values('KAROLBAGH','DELHI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  BRANCH values('CHANDANI','DELHI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  BRANCH values('MGROAD','BANGALORE');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CUSTOMER values('ANIL','CALCUTTA');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CUSTOMER values('RAHUL','BARODA');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CUSTOMER values('MADHURI','NAGPUR');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CUSTOMER values('PRAMOD','NAGPUR');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CUSTOMER values('SUNIL','DELHI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BORROW values(201,'ANIL','VRCE',1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BORROW values(261,'MGROAD','KAROLABAGH',5000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BORROW values(311,'SUNIL','MGROAD',3000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BORROW values(321,'MADHURI','CHANDANI',3000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BORROW values(375,'PRAMOD','MGROAD',8000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from BORROW where AMOUNT BETWEEN  2000 AND 3000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select * from BORROW where AMOUNT BETWEEN  2000 AND 3000;
++--------+---------+----------+--------+
+| LOANNO | CNAME   | BNAME    | AMOUNT |
++--------+---------+----------+--------+
+| 311    | SUNIL   | MGROAD   |   3000 |
+| 321    | MADHURI | CHANDANI |   3000 |
++--------+---------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from  DEPOSIT;
+Empty set (0.00 sec)
+
+mysql> select * from CUSTOMER where CITY=NAGPUR;
+ERROR 1054 (42S22): Unknown column 'NAGPUR' in 'where clause'
+mysql> desc CUSTOMER;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| CNAME | varchar(20) | YES  |     | NULL    |       |
+| CITY  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from CUSTOMER;
++---------+----------+
+| CNAME   | CITY     |
++---------+----------+
+| ANIL    | CALCUTTA |
+| RAHUL   | BARODA   |
+| MADHURI | NAGPUR   |
+| PRAMOD  | NAGPUR   |
+| SUNIL   | DELHI    |
++---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select CNAME from CUSTOMER where CITY=NAGPUR;
+ERROR 1054 (42S22): Unknown column 'NAGPUR' in 'where clause'
+mysql> select CNAME from CUSTOMER where CITY='NAGPUR';
++---------+
+| CNAME   |
++---------+
+| MADHURI |
+| PRAMOD  |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from BORROW where CNAME LIKE '%r';
+Empty set (0.00 sec)
+
+mysql> select * from BORROW where CNAME LIKE '%U';
+Empty set (0.00 sec)
+
+mysql> select * from BORROW where CNAME LIKE '-U%';
+Empty set (0.00 sec)
+
+mysql> select * from BORROW where CNAME LIKE '_U%';
++--------+-------+--------+--------+
+| LOANNO | CNAME | BNAME  | AMOUNT |
++--------+-------+--------+--------+
+| 311    | SUNIL | MGROAD |   3000 |
++--------+-------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from BORROW where CNAME LIKE '__U%';
+Empty set (0.00 sec)
+
+mysql> insert into DEPOSIT values(100,'ANIL','VRCE',1000,'1995-03-01');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into DEPOSIT values(101,'SUNIL','MGROAD',5000,'1996-01-04');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into DEPOSIT values(102,'RAHUL','KAROLBAGH',3500,'1995-11-17');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into DEPOSIT values(103,'MADHURI','CHANDANI',1200,'1995-12-17');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into DEPOSIT values(104,'PRAMOD','MGROAD',3000,'1996-03-27');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into DEPOSIT values(105,'SANDIP','KAROLBAGH',2000,'1996-03-31');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc DEPOSIT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| ACTNO  | varchar(25) | YES  |     | NULL    |       |
+| CNAME  | varchar(20) | YES  |     | NULL    |       |
+| BNAME  | varchar(20) | YES  |     | NULL    |       |
+| AMOUNT | int         | YES  |     | NULL    |       |
+| ADATE  | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |   1000 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select CNAME,ACTNO from DEPOSIT;
++---------+-------+
+| CNAME   | ACTNO |
++---------+-------+
+| ANIL    | 100   |
+| SUNIL   | 101   |
+| RAHUL   | 102   |
+| MADHURI | 103   |
+| PRAMOD  | 104   |
+| SANDIP  | 105   |
++---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where ADATE BETWEEN 1995-12-01 AND 1996-06-01;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select * from DEPOSIT where ADATE BETWEEN '1995-12-01' AND '1996-06-01';
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where CNAME LIKE '%C';
+Empty set (0.00 sec)
+
+mysql> select * from DEPOSIT where BNAME='CHANDANI' OR BNAME='MGROAD';
++-------+---------+----------+--------+------------+
+| ACTNO | CNAME   | BNAME    | AMOUNT | ADATE      |
++-------+---------+----------+--------+------------+
+| 101   | SUNIL   | MGROAD   |   5000 | 1996-01-04 |
+| 103   | MADHURI | CHANDANI |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD   |   3000 | 1996-03-27 |
++-------+---------+----------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where BNAME<>'CHANDANI' OR BNAME<>'MGROAD';
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |   1000 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where BNAME<>'CHANDANI' AND BNAME<>'MGROAD';
++-------+--------+-----------+--------+------------+
+| ACTNO | CNAME  | BNAME     | AMOUNT | ADATE      |
++-------+--------+-----------+--------+------------+
+| 100   | ANIL   | VRCE      |   1000 | 1995-03-01 |
+| 102   | RAHUL  | KAROLBAGH |   3500 | 1995-11-17 |
+| 105   | SANDIP | KAROLBAGH |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where AMOUNT>1000 AND order by CNAME asc';
+    '>
+    '> select * from DEPOSIT where AMOUNT>1000 AND order by CNAME asc';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by CNAME asc';
+
+select * from DEPOSIT where AMOUNT>1000 AND order by CNAME' at line 1
+mysql> select * from DEPOSIT order by CNAME desc;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 100   | ANIL    | VRCE      |   1000 | 1995-03-01 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT order by CNAME desc AND where AMOUNT>100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND where AMOUNT>100' at line 1
+mysql> select * from DEPOSIT where AMOUNT>100 AND order by CNAME desc AND where AMOUNT>100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by CNAME desc AND where AMOUNT>100' at line 1
+mysql> select * from DEPOSIT where AMOUNT>100 AND order by CNAME desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by CNAME desc' at line 1
+mysql> select * from DEPOSIT where AMOUNT>100 , order by CNAME desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', order by CNAME desc' at line 1
+mysql> select * from DEPOSIT where AMOUNT>1000;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> update DEPOSIT set AMOUNT=AMOUNT-AMOUNT*0.1 where CNAME=VRCE;
+ERROR 1054 (42S22): Unknown column 'VRCE' in 'where clause'
+mysql> update DEPOSIT set AMOUNT=AMOUNT-AMOUNT*0.1 where CNAME='VRCE';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update DEPOSIT set AMOUNT=AMOUNT-AMOUNT*0.1 where BNAME='VRCE';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from DEPOSIT;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |    900 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT order by CNAME asc where AMOUNT>100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where AMOUNT>100' at line 1
+mysql> select * from DEPOSIT order by CNAME desc where AMOUNT>100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where AMOUNT>100' at line 1
+mysql> update DEPOSIT set AMOUNT=AMOUNT-AMOUNT*0.1 where BNAME='VRCE' AND CNAME='ANIL';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from DEPOSIT;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |    810 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct * from DEPOSIT;
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |    810 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from BORROW where AMOUNT>2000 AND AMOUNT<8000;
++--------+---------+------------+--------+
+| LOANNO | CNAME   | BNAME      | AMOUNT |
++--------+---------+------------+--------+
+| 261    | MGROAD  | KAROLABAGH |   5000 |
+| 311    | SUNIL   | MGROAD     |   3000 |
+| 321    | MADHURI | CHANDANI   |   3000 |
++--------+---------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create table STUDENT(NAME varchar(20),ROLLNO int,BRANCH varchar2(20),CITY varchar2(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar2(20),CITY varchar2(20))' at line 1
+mysql> create table STUDENT(NAME varchar(20),ROLLNO int,BRANCH varchar(20),CITY varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into STUDENT values('VIJAYA',150,'CSE','CHENNAI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENT values('SITA',202,'ETC','KOLKATA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into STUDENT values('RAVI',300,'EEE','DELHI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENT values('BASU',165,'ETC','CHENNAI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENT values('RASHMI',107,'ETC','RKL');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENT values('KARAN',111,'CSE','CTC');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENT values('REKHA',117,'BME','BBSR');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select count(distinct *) from STUDENT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from STUDENT' at line 1
+mysql> select count(distinct column) from STUDENT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column) from STUDENT' at line 1
+mysql> select BRANCH count(*) from STUDENT group by BRANCH;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(*) from STUDENT group by BRANCH' at line 1
+mysql> select BRANCH , count(*) from STUDENT group by BRANCH;
++--------+----------+
+| BRANCH | count(*) |
++--------+----------+
+| CSE    |        2 |
+| ETC    |        3 |
+| EEE    |        1 |
+| BME    |        1 |
++--------+----------+
+4 rows in set (0.01 sec)
+
+mysql> alter table STUDENT add(MARKS number(8));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8))' at line 1
+mysql> alter table STUDENT add(MARKS NUMBER(8));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER(8))' at line 1
+mysql> alter table STUDENT ADD(MARKS number(8));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8))' at line 1
+mysql> alter table STUDENT add MARKS number(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8)' at line 1
+mysql> alter table STUDENT ADD MARKS number(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8)' at line 1
+mysql> alter table STUDENT ADD MARKS NUMBER(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER(8)' at line 1
+mysql> alter table STUDENT add MARKS NUMBER(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER(8)' at line 1
+mysql> alter table STUDENT add MARKS number(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8)' at line 1
+mysql> alter table STUDENT modify NAME varchars(25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchars(25)' at line 1
+mysql> alter table STUDENT modify NAME varchar(25);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc STUDENT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| NAME   | varchar(25) | YES  |     | NULL    |       |
+| ROLLNO | int         | YES  |     | NULL    |       |
+| BRANCH | varchar(20) | YES  |     | NULL    |       |
+| CITY   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from STUDENT;
++--------+--------+--------+---------+
+| NAME   | ROLLNO | BRANCH | CITY    |
++--------+--------+--------+---------+
+| VIJAYA |    150 | CSE    | CHENNAI |
+| SITA   |    202 | ETC    | KOLKATA |
+| RAVI   |    300 | EEE    | DELHI   |
+| BASU   |    165 | ETC    | CHENNAI |
+| RASHMI |    107 | ETC    | RKL     |
+| KARAN  |    111 | CSE    | CTC     |
+| REKHA  |    117 | BME    | BBSR    |
++--------+--------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> delete from STUDENT where BRANCH='ETC';
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> rename STUDENT to STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STUDENT to STUDINFORMATION' at line 1
+mysql> alter STUDENT change STUDENT STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STUDENT change STUDENT STUDINFORMATION' at line 1
+mysql> alter table STUDENT change STUDENT STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table STUDENT change STUDENT to STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to STUDINFORMATION' at line 1
+mysql> rename table STUDENT to STUDINFORMATION;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from DEPOSIT where BNAME!='CHANDANI' OR BNAME!='MGROAD';
++-------+---------+-----------+--------+------------+
+| ACTNO | CNAME   | BNAME     | AMOUNT | ADATE      |
++-------+---------+-----------+--------+------------+
+| 100   | ANIL    | VRCE      |    810 | 1995-03-01 |
+| 101   | SUNIL   | MGROAD    |   5000 | 1996-01-04 |
+| 102   | RAHUL   | KAROLBAGH |   3500 | 1995-11-17 |
+| 103   | MADHURI | CHANDANI  |   1200 | 1995-12-17 |
+| 104   | PRAMOD  | MGROAD    |   3000 | 1996-03-27 |
+| 105   | SANDIP  | KAROLBAGH |   2000 | 1996-03-31 |
++-------+---------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from DEPOSIT where BNAME!='CHANDANI' AND BNAME!='MGROAD';
++-------+--------+-----------+--------+------------+
+| ACTNO | CNAME  | BNAME     | AMOUNT | ADATE      |
++-------+--------+-----------+--------+------------+
+| 100   | ANIL   | VRCE      |    810 | 1995-03-01 |
+| 102   | RAHUL  | KAROLBAGH |   3500 | 1995-11-17 |
+| 105   | SANDIP | KAROLBAGH |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table STUDENT add MARKS number(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8)' at line 1
+mysql> alter table STUDINFORMATION add MARKS number(8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(8)' at line 1
+mysql> delete table STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table STUDINFORMATION' at line 1
+mysql> select * from STUDINFORMATION;
++--------+--------+--------+---------+
+| NAME   | ROLLNO | BRANCH | CITY    |
++--------+--------+--------+---------+
+| VIJAYA |    150 | CSE    | CHENNAI |
+| RAVI   |    300 | EEE    | DELHI   |
+| KARAN  |    111 | CSE    | CTC     |
+| REKHA  |    117 | BME    | BBSR    |
++--------+--------+--------+---------+
+4 rows in set (0.01 sec)
+
+mysql> delete table from STUDINFORMATION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table from STUDINFORMATION' at line 1
+mysql> delete from STUDINFORMATION;
+Query OK, 4 rows affected (0.01 sec)
+
+mysql> alter table STUDINFORMATION add MARKS bigint(8);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> drop table STUDINFORMATION;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>

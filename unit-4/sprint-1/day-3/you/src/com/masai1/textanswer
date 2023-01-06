@@ -1,0 +1,25 @@
+3->
+Wrapper classes-
+Classes representing primitive data types are called Wrapper Classes.
+Ex-
+ Primitive Data Types : Wrapper Classes byte : java.lang.Byte short : java.lang.Short
+
+4->
+Java virtual machine accept only double as decimal value not float , it will give error if we use float.
+
+public class Main {
+public static void main(String[] args) {
+float f=3.3;
+System.out.println(f);
+}
+}
+output=Error
+
+ public class Main {
+public static void main(String[] args) {
+double f=3.3;
+System.out.println(f);
+}
+}
+
+output=3.3

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="s" class="com.que3.Student" >
+<constructor-arg name="roll" value="10" />
+<constructor-arg name="name" value="akash" />
+<constructor-arg name="marks" value="100" />
+</bean>
+
+<bean id="c" class="com.que3.Collage" >
+<property name="collage_name" value="jaipuria"/>
+<property name="student" ref="s"/>
+<property name="collage_address" value="shobabazar"/>
+</bean>
+
+
+
+</beans>

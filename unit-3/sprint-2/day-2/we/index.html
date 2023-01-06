@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="pay-img" src="https://c.tenor.com/K2UGDd4acJUAAAAM/load-loading.gif" alt="">
+</body>
+</html>
+<script>
+    function bankserver(){
+        return true
+    }
+    let payement_promise=new Promise(function(resolve,reject){
+        let pin=bankserver();
+        setTimeout(function(){
+         if(pin){
+            resolve("payement done")
+         }else{
+            reject("try again")
+         }
+        },3000)
+    });
+    // console.log(payement_promise)
+    let image=document.querySelector("#pay-img");
+    // payement_promise.then(function(res){
+    //     // res-payement done
+    //     image.src="https://c.tenor.com/xVfFIHxAzW4AAAAC/success.gif"
+    // });
+    // payement_promise.catch(function(rej){
+    //     image.src="https://c.tenor.com/flmQIupAKBkAAAAC/steven-he-failure.gif"
+    // });
+     
+    async function content(){
+        try{
+            let res=await payement_promise;
+            image.src="https://c.tenor.com/xVfFIHxAzW4AAAAC/success.gif"
+
+        }catch(err){
+            image.src="https://c.tenor.com/flmQIupAKBkAAAAC/steven-he-failure.gif"
+        }
+    }
+    content()
+  
+</script>

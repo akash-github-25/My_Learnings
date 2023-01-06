@@ -1,0 +1,102 @@
+﻿JDBC-
+QUESTION 3-
+
+
+Many to Many:-
+> select * from Student;
+create table Student(roll int primary key,sname varchar(12),address varchar(12),mobile varchar(12),dateofbirth date);
++------+----------+------------+---------+-------------+
+| roll | sname    | address    | mobile  | dateofbirth |
++------+----------+------------+---------+-------------+
+|    1 | akash    | tanmay apt | 23455   | 2000-12-25  |
+|    2 | ayush    | hanmayt    | 23455   | 2001-12-21  |
+|    3 | aryan    | bahrain    | 24567   | 2003-01-21  |
+|    4 | abhishek | taliban    | 9876353 | 2004-01-21  |
++------+----------+------------+---------+-------------+
+
+
+ select * from course;
+create table course(
+    ->
+    -> cid int primary key,
+    -> cname varchar(12),
+    -> fee int,
+    -> duration varchar(12)
+    -> )
+    -> ;
+
+
++-----+------------+------+----------+
+| cid | cname      | fee  | duration |
++-----+------------+------+----------+
+| 100 | spring     | 1200 | 5 months |
+| 200 | springboot | 1400 | 6 months |
+| 300 | hibernate  | 1500 | 7 months |
+| 400 | java       | 1500 | 4 months |
++-----+------------+------+----------+
+
+
+ select * from student_course;
+
+
+create table student_course
+    -> (
+    -> roll int,
+    -> cid int,
+    -> foreign key (roll) references student(roll),
+    -> foreign key (cid) references course(cid)
+    -> );
+
+
++------+------+
+| roll | cid  |
++------+------+
+|    1 |  100 |
+|    2 |  300 |
+|    3 |  400 |
+|    4 |  100 |
++------+------+
+
+
+
+
+Students enrolled in spring:-
+
+
+ select s.sname,s.address,s.mobile,s.dateofbirth,c.cid,c.cname from Student s INNER JOIN course c INNER JOIN student_course f ON s.roll=f.roll AND c.cid=f.cid AND c.cname='spring';
+
+
+Course details for all students:-
+ select s.sname,c.cid,c.cname,c.fee,c.duration from Student s INNER JOIN course c INNER JOIN student_course f ON s.roll=f.roll AND c.cid=f.cid;
+
+
+QUESTION 2-
+try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                } catch (ClassNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+                
+                String url="jdbc:mysql://localhost:3306/we19sb101db";
+                
+                try {
+                        Connection con= DriverManager.getConnection(url, "root", "ak@25");
+                        
+                        if(con!=null) System.out.println("Connected....");
+                        
+                } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+
+
+
+
+QUESTION 1-
+
+
+java database connectivity (JDBC) is the JavaSoft specification of a standard application programming interface (API) that allows Java programs to access database management systems. The JDBC API consists of a set of interfaces and classes written in the Java programming language
+
+
+ JDBC driver uses the JDBC™ (Java Database Connectivity) API developed by Sun Microsystems, now part of Oracle, that provides a standard way to access data using the Java™ programming language.

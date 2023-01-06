@@ -1,0 +1,2 @@
+yes, in application.properties by writing,
+server.port=8321

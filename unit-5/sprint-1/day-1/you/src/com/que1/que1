@@ -1,0 +1,7 @@
+1.LinkedList is a bit better, from 5 to 10 percents quicker on my machine.
+
+2.If you use a LinkedList, you would need to resort the items each time you added one which is not
+in the case of PriorityQueue.
+s
+3.PriorityQueue will be sorted as well as ordered as per the natural order but we can add a Commparator
+ also in order to define the particular order of sorting for a record, while as LinkedList will be just ordered.

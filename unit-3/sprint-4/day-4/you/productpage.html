@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+           gap:10px;
+
+        }
+        #container>div>img{
+            width:100%;
+            height:60%;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="lh()">SORT PRICE(lh)</button>
+    <button onclick="hl()">SORT PRICE(hl)</button>
+    <!-- <select name="" id="filter">
+        <option value="fill">filter</option>
+        <option value="more">ratings more than 4</option>
+        <option value="less">ratings less than 4</option>
+    </select> -->
+    <button onclick="filt()">more than 4 rating</button>
+    <button onclick="filt1()">less than 3 rating</button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+async function main(){
+    let rit=await fetch("http://127.0.0.1:3000/api/products")
+    let data=await rit.json()
+    append(data)
+    // return data
+  }
+  main()
+
+  function append(data){
+    let container=document.querySelector("#container")
+    container.innerHTML=null
+    data.forEach(({name,price,id,url})=>{
+        let div=document.createElement("div")
+        let p1=document.createElement("p")
+        p1.innerText=`ratings-${id}`
+     let p=document.createElement("p")
+     p.innerText=`Item-${name}`
+     let img=document.createElement("img")
+     img.src=url
+     let prii=document.createElement("p")
+     prii.innerText=`price-${price}`
+     div.append(img,p,p1,prii)
+     container.append(div)
+    })
+}
+
+async function hl(){
+    let res=await fetch("http://127.0.0.1:3000/api/products/?_sort=price&_order=desc")
+    let data=await res.json()
+    append(data)
+    
+    // append(data)
+ }
+ async function lh(){
+    let res=await fetch("http://127.0.0.1:3000/api/products/?_sort=price&_order=asc")
+    let data=await res.json()
+    append(data)
+    
+    // append(data)
+ }
+
+ async function filt(){
+    let res=await fetch("http://127.0.0.1:3000/api/products/?id_gte=4")
+    let data=await res.json()
+    append(data)
+    
+    // append(data)
+ }
+
+ async function filt1(){
+    let res=await fetch("http://127.0.0.1:3000/api/products/?id_lte=3")
+    let data=await res.json()
+    append(data)
+    
+    // append(data)
+ }
+</script>

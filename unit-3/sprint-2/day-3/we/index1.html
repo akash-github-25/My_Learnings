@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <!-- <select name="" id="sec">
+        <option value="lh">lh</option>
+        <option value="hl">hl</option>
+    </select> -->
+</body>
+</html>
+<script>
+ 
+    
+    const url="https://fakestoreapi.com/products"
+    async function getData(){
+        try{
+        let res= await fetch(url)
+        let data= await res.json();
+        append(data);
+        // on(data.Search)
+        // console.log(data.Search)
+//         document.querySelector("#sec").addEventListener("change",on)
+//     function on(){
+        
+//   let x=  document.querySelector("#sec").value
+//   if(x=="hl"){
+//     console.log(data)
+//   }
+//     }
+    
+        }catch(err){
+            console.log(err)
+        }
+        
+    }
+    getData();
+//     getData();
+//     document.querySelector("#sec").addEventListener("change",on)
+//     function on(){
+//         console.log(data.Search)
+//   let x=  document.querySelector("#sec").value
+//   if(x==lh){
+
+//   }
+//     }
+    function append(data){
+    let container=document.getElementById("container")
+    data.sort(function(a,b){
+        return a.price-b.price
+    });
+    data.forEach(function(el){
+        let img=document.createElement("img");
+        img.src=el.image;
+        let p=document.createElement("p")
+        p.innerText=el.title
+        let price=document.createElement("p")
+        price.innerText=el.price
+        let div=document.createElement("div");
+        div.append(img,p,price)
+        container.append(div)
+    })
+ }
+</script>

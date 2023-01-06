@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id = "t" class = "com.que4.Triangle">
+<property name="side" value="15"/>
+</bean>
+<bean id = "cl" class = "com.que4.Circle">
+<property name="radius" value="10"/>
+</bean>
+
+<bean id = "cyd" class = "com.que4.Cylinder">
+<property name="radius" value="10"/>
+<property name="height" value ="20"/>
+</bean>
+</beans>

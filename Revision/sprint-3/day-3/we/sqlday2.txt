@@ -1,0 +1,90 @@
+NESTED SUBQUERY-
+
+1.
+select department_name from department where department_id in (SELECT
+department_id
+FROM
+employee
+WHERE
+salary > 10000);
+2.
+SELECT job_title from job where job_id in (select job_id from employee where salary>10000);
+3.
+SELECT
+product_id,
+COUNT(*) AS number_of_orders
+FROM
+sale
+GROUP BY
+product_id order by number_of_orders desc limit 3;
+4.
+SELECT * from product where product_id in(
+SELECT
+product_id
+FROM
+sale
+GROUP BY
+product_id
+ORDER BY
+COUNT(*) DESC
+LIMIT
+3);
+6.
+SELECT * from product where product_id in(
+SELECT
+product_id
+FROM
+sale
+GROUP BY
+product_id
+HAVING
+COUNT(*) == 1);
+8.
+SELECT
+product_name,list_price
+FROM
+product
+WHERE
+product_id IN (
+SELECT
+product_id
+FROM
+sale
+GROUP BY
+product_id
+HAVING
+COUNT(*) == 1
+);
+
+GROUPBY_HAVING-
+
+1.
+select sector,Avg(eps) AS AvgEPSPerSector from Stock GROUP by sector HAVING
+Avg(eps)>10 order by Avg(eps) desc;
+2.
+SELECT
+job_id,
+AVG(salary) AS avg_salary
+FROM
+employee
+GROUP BY
+job_id
+HAVING
+AVG(salary)>10000
+ORDER BY
+avg_salary DESC;
+3.
+SELECT
+job_id,
+AVG(salary) AS avg_salary
+FROM
+employee
+GROUP BY
+job_id
+HAVING
+AVG(salary)>=10000 and AVG(salary)<=20000
+ORDER BY
+avg_salary DESC;
+4.
+SELECT product_id,COUNT(*) AS number_of_orders from sale GROUP BY product_id
+HAVING COUNT(*)>1 ORDER BY COUNT(*) desc;

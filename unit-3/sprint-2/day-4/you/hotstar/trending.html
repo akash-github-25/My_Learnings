@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:20px;
+        }
+        h1{
+            text-align: center;
+        }
+        #container>div>img{
+            width:200px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trendings</h1>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    async function hello(){
+        let url=`https://api.themoviedb.org/4/list/1?api_key=81d4d71748a269e3cb348dd669117e15`
+        let res=await fetch(url)
+        let data=await res.json()
+        console.log(data.results)
+        append(data.results)
+    }
+    hello()
+    function append(data){
+        let container1=document.querySelector("#container")
+        container1.innerHTML=""
+        data.forEach(function(el){
+        let img=document.createElement("img");
+        img.src=`https://image.tmdb.org/t/p/w500${el.poster_path}`;
+        let p=document.createElement("p")
+        p.innerText=`Name-${el.original_title}`
+        let price=document.createElement("p")
+        price.innerText=`Data-${el.release_date}`
+        let imdb=document.createElement("p")
+        imdb.innerText=`Ratings-${Math.floor(Math.random()*10)+1}`
+        let div=document.createElement("div");
+        div.append(img,p,price,imdb)
+        container1.append(div)
+    })
+}
+</script>

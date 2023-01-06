@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #upper{
+            display:flex;
+        
+            width:690px;
+            height:100px;
+            margin: auto;
+            justify-content: space-between;
+
+        }
+        #upper>div{
+    
+            width:320px;
+            height:70px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        div:nth-child(2){
+    
+            display: flex;
+            justify-content: space-between;
+            width:580px;
+            margin-left: 350px;
+            
+        }
+        #middle{
+            border:1px solid red;
+        margin:auto;
+            width:170px;
+            height:100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #keybord{
+            
+            width:170px;
+            height:200px;
+            margin:auto;
+            margin-top: 10px;
+        }
+        button{
+            width:45px;
+            height:50px;
+            margin-right: 6px;
+        }
+        #btn10{
+            margin-left: 54px;
+            margin-top: 0px;
+        }
+        #enter{
+            border:1px solid red;
+            width:170px;
+            height:70px;
+            margin: auto;
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color:white;
+        }
+        #hi {
+            background-color: red;
+            color:black;
+        }
+        #hloo {
+            background-color: green;
+            color:black;
+        }
+        #middle{
+            background-color: teal;
+            color:blue;
+        }
+        #btn1 {
+
+            background-color: green;
+        }
+        #btn2 {
+
+background-color: orange;
+}
+#btn3 {
+
+background-color: green;
+}
+#btn4 {
+
+background-color: orange;
+}
+#btn5 {
+
+background-color: orange;
+}
+#btn6 {
+
+background-color: orange;
+}
+#btn7 {
+
+background-color: green;
+}
+#btn8 {
+
+background-color: orange;
+}
+#btn9 {
+
+background-color: green;
+}
+#btn10 {
+    background-color: pink;
+    color:white
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="upper">
+        <div id="hi">49</div>
+        <div id="hloo">300</div>
+    </div>
+    <div><h3>MIN</h3>
+        <h3>MAX</h3></div>
+        <div id="middle">#</div>
+        <div id="keybord">
+            <button id="btn1">1</button>
+            <button id="btn2">2</button>
+            <button id="btn3">3</button>
+            <button id="btn4">4</button>
+            <button id="btn5">5</button>
+            <button id="btn6">6</button>
+            <button id="btn7">7</button>
+            <button id="btn8" >8</button>
+            <button id="btn9">9</button>
+            <button id="btn10">0</button>
+        </div>
+        <div id="enter">ENTER</div>
+</body>
+</html>
+<script>
+    let x=document.querySelectorAll("button")
+    let bag="";
+    for(let i=0;i<x.length;i++){
+       x[i].addEventListener("click",on)
+       function on(){
+           let targetNumber=event.target.innerText;
+           bag=bag+targetNumber;
+           document.querySelector("#middle").innerText=bag;
+       }
+       document.querySelector("#enter").addEventListener("click",on1)
+       function on1(){
+           
+          let y= document.querySelector("#hi").innerText
+          let z= document.querySelector("#hloo").innerText
+          if(Number(bag)<y){
+            document.querySelector("#hi").innerText =bag;
+          }else if(Number(bag)>z){
+            document.querySelector("#hloo").innerText =bag;
+          }
+       }
+    }
+</script>

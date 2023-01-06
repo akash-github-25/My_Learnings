@@ -1,0 +1,17 @@
+Write Short notes on how the Spring framework evolves.?
+
+Spring framework is arguably one of the most popular application development frameworks 
+used by java developers. It currently consists of a large number of modules providing a 
+range of services. These include a component container, aspect oriented programming 
+support for building cross cutting concerns, security framework, data access framework,
+web application framework and support classes for testing components. All the components 
+of the spring framework are glued together by the dependency injection architecture  pattern. Dependency injection(also known as inversion of control) makes it easy to  design and test loosely coupled software components. The current version of spring 
+framework is 4.3.x and the next major version 5.0 is scheduled for release in the fourth
+quarter of 2017.
+
+Over years spring framework has grown substantially. Almost all infrastructural softwarecomponents required by a java enterprise application is now available in spring framework.
+However collecting all the required spring components together and configuring them in 
+ a new application requires some effort. This involves setting up library dependencies
+ in gradle/maven and then configuring the required spring beans using xml, annotations
+or java code. Spring developers soon realized that it is possible to automate much of 
+this work.

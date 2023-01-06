@@ -1,0 +1,56 @@
+package com.masai.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.bean.Book;
+import com.masai.repository.BookRepo;
+
+@Service
+public class BookServiceImpl implements BookService{
+	
+	@Autowired
+	public BookRepo br;
+
+	@Override
+	public Book addBook(Book book) {
+		// TODO Auto-generated method stub
+		Book b=br.save(book);
+		return b;
+		
+	}
+
+	@Override
+	public Book updateBook(Integer bookId) {
+		// TODO Auto-generated method stub
+		Optional<Book> bk=br.findById(bookId);
+		Book updatedBook=br.save(bk.get());
+		return updatedBook;
+	}
+
+	@Override
+	public Book deleteBook(Book book) {
+		// TODO Auto-generated method stub
+		br.delete(book);
+		return book;
+	}
+
+	@Override
+	public Book viewBook(Integer bookId) {
+		// TODO Auto-generated method stub
+		Optional<Book> g=br.findById(bookId);
+		Book v=g.get();
+		return v;
+	}
+
+	@Override
+	public List<Book> viewAllBooking() {
+		// TODO Auto-generated method stub
+		List<Book> books=br.findAll();
+		return books;
+	}
+
+}

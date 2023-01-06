@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #8caacf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0468aa;
+  color: white;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="assignment name" id="name">
+        <input type="text" placeholder="assignment type" id="type">
+        <input type="date" id="date">
+        <input type="submit" placeholder="submit">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Assignment name</th>
+                <th>Assignment type</th>
+                <th>Deadline date</th>
+                <th>Delete button</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr id="tr">
+                <!-- <td id="td1"></td>
+                <td id="td2"></td>
+                <td id="td3"></td>
+                <td><button onclick="remove()">delete</button></td> -->
+            <!-- </tr> --> 
+        </tbody>
+       </table>
+       <button><a href="lecture.html">List page</a></button>
+</body>
+</html>
+<script>
+    let arr=JSON.parse(localStorage.getItem("data"))||[]
+    display(arr)
+    function display(arr){
+        document.querySelector("tbody").innerHTML=""
+        arr.forEach((el,index)=>{
+            console.log(el.name)
+            let tr=document.createElement("tr")
+          let td1=document.createElement("td")
+  td1.innerText=el.name
+ let td2=document.createElement("td")
+  td2.innerText=el.name1
+ let td3=document.createElement("td")
+  td3.innerText=el.date
+  let td4=document.createElement("button")
+  td4.innerText="remove"
+  td4.addEventListener("click",()=>{
+    remove(index)
+  })
+  tr.append(td1,td2,td3,td4)
+  document.querySelector("tbody").append(tr)
+ 
+        })
+    }
+    // let arr=[]
+    document.querySelector("form").addEventListener("submit",on)
+    function on(event){
+        event.preventDefault()
+    let assign=document.querySelector("#name").value
+    let assign1=document.querySelector("#type").value
+    let date=document.querySelector("#date").value
+    class construct{
+    constructor(n,t,m){
+        this.name=n;
+        this.name1=t;
+        this.date=m;
+    }
+}
+
+  let s=new construct(assign,assign1,date)
+  console.log(s)
+  arr.push(s)
+  localStorage.setItem("data",JSON.stringify(arr))
+window.location.reload()
+    }
+   
+    function remove(index){
+        arr.splice(index,1)
+        localStorage.setItem("data",JSON.stringify(arr))
+         display(arr)
+    }
+    // localStorage.setItem("data",JSON.stringify(arr))
+</script>

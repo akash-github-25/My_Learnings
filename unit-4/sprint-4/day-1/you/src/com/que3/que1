@@ -1,0 +1,9 @@
+ Explain about the Marker interface?
+ 
+ Marker interface is an empty interface used to specify certain type of special behaviour of our object.
+ 
+ Some examples are-
+ java.io.Serializable,
+java.lang.Cloanable.
+
+Moving out the  obj from the RAM to outside the RAM is known as serialization. and reverse is known as deserialization.

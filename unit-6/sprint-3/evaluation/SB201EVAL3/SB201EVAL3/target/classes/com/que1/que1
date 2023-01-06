@@ -1,0 +1,48 @@
+
+IOC-
+Spring IOC means Inversion of Control container. The Inversion of control container is a 
+design principle that allows classes to be loosly coupled and, therefore, easier to 
+test and maintain. IOC refers to transferring the control of objects and their 
+dependencies from the main program to a container or framework. 
+
+Life cycle of the Spring Bean - 
+
+The bean life cycle is managed by the spring container. When we run the program then, 
+first of all the spring container gets started. After that, the container creates the instance of a bean as per the request, and then 
+dependencies are injected. And finally, the bean is destroyed when the spring container is closed. Therefore if we 
+want to execute some code on the bean instatiation and just after closing the spring container, then we can write 
+that code inside the custom init() method and the destroy() method. 
+
+Bean have two major phases Bean Creation Phase and Bean Destruction Phase.
+
+
+1.  Bean Creation Phase :
+
+Instantiation: This is where everything starts for a bean. Spring instantiates bean 
+objects just like we would manually create a java object instance.
+   
+Populating Properties: After instantiating objects, spring scans the beans that implement
+ AWARE interfaces and starts setting relevant properties.
+   
+Pre-Initialization: Spring’s BeanPostProcessors get into action in this phase. 
+The postProcessBeforeInitialization() methods do their job. Also, @PostConstruct 
+annotated methods run right after them.
+   
+AfterPropertiesSet: Spring executes the afterPropertiesSet() methods of the beans which 
+implement InitializingBeans. 
+
+Custom Initialization: Spring triggers the initialization methods that we defined in the 
+initMethod attribute of our @BeanAnnotations.
+  
+Post- Initialization: Spring's BeanPostProcessors are the action for the second time.
+ This phase triggers the postProcessAfterInitialization() methods.
+
+
+2. Bean Destruction Phases
+
+Pre-Destroy: Spring triggers @PreDestroy annotated methods in this phase. 
+   
+Destroy: Spring executes the destroy() methods of DisposableBean implementations. 
+
+Custom Destruction: We can define custom destruction hooks with the destroyMethod 
+attribute in the @Bean annotation and spring runs them in the last phase.

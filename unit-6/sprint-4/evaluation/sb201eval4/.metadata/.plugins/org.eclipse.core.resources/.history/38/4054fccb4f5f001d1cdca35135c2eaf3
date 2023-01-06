@@ -1,0 +1,10 @@
+package com.masai.repository;
+
+public class AccountRepo extends jpaRe{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

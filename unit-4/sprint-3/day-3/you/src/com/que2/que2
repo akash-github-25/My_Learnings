@@ -1,0 +1,47 @@
+1.In java, super keyword is used to access methods of the parent class object while this is used to access the current class object.
+
+
+Example :- this  
+
+class hello{
+	hello gethello(){
+		// returing the instance of current class
+		return this;
+	}
+	void print(){
+		System.out.println("Hello World!");
+	}
+}
+public class Main {
+    public static void main(String[] args) {
+    	new hello().gethello().print();
+    }
+}
+
+Output :- Hello World!
+
+
+
+Example :- super 
+
+
+class Animal{  
+   Animal(){
+       System.out.println("animal");
+   }  
+}
+
+class Cat extends Animal{  
+     Cat(){  
+super();  
+System.out.println("cat");  
+}  
+}  
+public static void main(String args[]){  
+Cat d=new  Cat();  
+}
+
+
+Output :- 
+animal
+cat.

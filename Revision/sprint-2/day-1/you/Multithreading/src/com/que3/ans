@@ -1,0 +1,184 @@
+1.
+We use Threads to make Java applications faster by doing multiple things at the same time.
+In technical terms, Thread helps us to achieve parallelism in Java programs.
+
+2.
+class MyThread implements Runnable
+{
+    public void run()
+    {
+        System.out.println("thread starts");
+    }
+}
+
+class MyThreadDemo
+{
+    public static void main(String args[])
+    {
+        MyThread mt = new MyThread();
+        Thread t = new Thread(mt);
+        t.start();
+    }
+}
+
+3.
+class Multi extends Thread{  
+public void run(){  
+System.out.println("thread runs");  
+}  
+public static void main(String args[]){  
+Multi t1=new Multi();  
+t1.start();  
+ }  
+}  
+
+4.
+Runnable runnable = new MyRunnable();    
+Thread thread = new Thread(runnable);  
+thread.start();  
+
+5.
+public class Run implements Runnable  
+{    
+    public void run()  
+    {    
+        System.out.println("Thread is running...");    
+    }    
+    public static void main(String args[])  
+    {    
+        Run r1=new Run();    
+        Thread t1 =new Thread(r1);
+        t1.start();    
+    }    
+}  
+
+6.
+A thread in Java at any point of time exists in any one of the following states.
+ A thread lies only in one of the shown states at any instant: 
+New
+Runnable
+Blocked
+Waiting
+Timed Waiting
+Terminated
+
+7.
+public class JavaS extends Thread  
+{    
+    public void run()  
+    {    
+        System.out.println("running...");    
+    }    
+    public static void main(String args[])  
+    {    
+       
+        JavaS t1=new JavaS();    
+        JavaS t2=new JavaS();  
+       
+        t1.setPriority(4);  
+        t2.setPriority(7);  
+       
+        System.out.println("Priority of thread t1 is: " + t1.getPriority()); 
+        System.out.println("Priority of thread t2 is: " + t2.getPriority()); 
+        
+        t1.start();  
+    }  
+}  
+
+8.
+ExecutorService is a JDK API that simplifies running tasks in asynchronous mode.
+
+9.
+ExecutorService service=Executors.newFixedThreadPool(3);
+
+11.
+The isShutdown method of ExecutorService in Java is used to check if the executor service
+ is shut down or not.
+ 
+ 12.
+ import java.util.concurrent.*;
+class MyCallable implements Callable{
+int num;
+public MyCallable(int num) {
+this.num = num;
+}
+@Override
+public Object call() throws Exception {
+System.out.println(Thread.currentThread().getName()+" .. is responsible to find the sum of first "+num+" numbers");
+int sum=0;
+for(int i=0;i<=num;i++){
+sum = sum+i;
+}
+return sum;
+}
+}
+class Main{
+public static void main(String[] args)throws Exception {
+MyCallable[] jobs = {
+new MyCallable(10),
+new MyCallable(20),
+new MyCallable(30),
+new MyCallable(40),
+new MyCallable(50),
+new MyCallable(60),
+};
+ExecutorService service=Executors.newFixedThreadPool(3);
+for(MyCallable job:jobs){
+Future f= service.submit(job);
+System.out.println(f.get());
+}
+service.shutdown();
+}
+
+13.
+Synchronization in java is the capability to control the access of multiple threads to 
+any shared resource.
+
+14.
+synchronized (this) {
+			
+			
+			for(int i=0;i<=100;i++){
+				System.out.println("child thread calculation");
+			}
+			
+			System.out.println("child thread giving notification");
+			this.notify();
+			}
+			
+15.
+A static method cannot be synchronized.
+
+16.
+java.lang.Thread class provides the join() method which allows one thread to wait until 
+another thread completes its execution. If t is a Thread object whose thread is currently
+executing, then t.join() will make sure that t is terminated before the next instruction
+is executed by the program.
+  
+18.
+a situation in which two computer programs sharing the same resource are effectively
+preventing each other from accessing the resource, resulting in both programs ceasing
+to function.
+
+19.
+.It is implemented by following methods of Object class: wait() notify() notifyAll()
+
+20.
+wait() method is a part of java. lang. Object class. When wait() method is called, 
+the calling thread stops its execution until notify() or notifyAll() method is invoked
+ by some other Thread.
+ 
+ 21.
+ The notify() method is defined in the Object class, which is Java's top-level class. 
+ It's used to wake up only one thread that's waiting for an object, and that thread then
+  begins execution.
+  
+  22.
+  The notifyAll() method of thread class is used to wake up all threads. 
+  This method gives the notification to all waiting threads of a particular object.
+ 
+ 
+
+
+ 
+  

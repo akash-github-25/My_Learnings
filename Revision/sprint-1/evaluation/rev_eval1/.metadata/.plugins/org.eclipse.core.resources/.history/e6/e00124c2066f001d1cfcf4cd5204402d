@@ -1,0 +1,13 @@
+package com.masai.service;
+
+import java.util.List;
+
+import com.masai.bean.Book;
+
+public interface BookService {
+	public Book addCustomer(Book book);
+	public Book updateCustomer(Book book);
+	public Book deleteCustomer(Book book);
+	public Book viewBook(Integer bookId);
+	public List<Book> viewAllBooking(Integer bookId);
+}

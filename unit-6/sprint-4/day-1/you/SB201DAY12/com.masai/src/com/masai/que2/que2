@@ -1,0 +1,44 @@
+The Hypertext Transfer Protocol is an application protocol for distributed, collaborative,
+ hypermedia information systems that allows users to communicate data on the World Wide 
+ Web.
+
+Http protocol:
+It is a protocol that contains set of rules and guidelines to get communication bt
+http client (browser s/w)  and web-server/application-server.
+In case of WA the http client will be web-browser s/w , whereas in case of WS the 
+client could be one of the following:
+
+1.brower s/w
+2.Postman s/w
+3.swagger s/w
+4.angular app
+5.react app
+6.normal JS using ajax (using fetch api)
+7.some other application which is developed in another language (.net, python)
+8.another type of java application / microservices
+
+
+HTTP Request Structure from Client
+A simple request message from a client computer consists of the following components:
+
+A request line to get a required resource, for example a request GET /content/page1.html 
+is requesting a resource called /content/page1.html from the server.
+Headers (Example – Accept-Language: EN).
+An empty line.
+A message body which is optional.
+All the lines should end with a carriage return and line feed. The empty line should only 
+contains carriage return and line feed without any spaces.
+
+HTTP Response Structure from Web Server
+
+A simple response from the server contains the following components:
+
+HTTP Status Code (For example HTTP/1.1 301 Moved Permanently, means the requested resource
+ was permanently moved and redirecting to some other resource).
+Headers (Example – Content-Type: html)
+An empty line.
+A message body which is optional.
+All the lines in the server response should end with a carriage return and line feed. 
+Similar to request, the empty line in a response also should only have carriage return 
+and line feed without any spaces.
+

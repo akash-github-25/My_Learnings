@@ -1,0 +1,8 @@
+HashMap is used to store data in the form of key value pairs where key and value 
+can be of any datatype and it cannot store two same key as diffrent keys so if we try to
+add two same key it will replace the other key.
+Simlar for hashset , so in a hashset we cannot add two same values each and every data
+should be diffrent.
+LinkedList  is a linear data structure where the elements are not stored in contiguous
+ locations and every element is a separate object with a data part and address part. 
+ The elements are linked using pointers and addresses. Each element is known as a node. 

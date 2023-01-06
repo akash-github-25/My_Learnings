@@ -1,0 +1,29 @@
+﻿QUESTION 1
+update faculty
+set department=
+CASE
+WHEN(department='CS') THEN 'Computer Science'
+WHEN(department='EC') THEN 'Electronics and Communication'
+WHEN(department='HSS') THEN 'Humanities and Social Sciences'
+ELSE(department)
+END
+WHERE department IN ('CS','EC','HSS');
+
+
+
+
+ QUESTION 2
+
+
+ update faculty
+    -> set vacationhours=
+    -> CASE
+    -> WHEN(workinghours<=50) THEN null
+    -> WHEN(workinghours<=80) THEN 20
+    -> WHEN(workinghours<=120) THEN 40
+    -> ELSE(vacationhours)
+    -> END;
+
+
+Question 3
+ select facultyid,name,department,gender,salary,workinghours, IF(vacationhours is NULL,'not allowed',vacationhours) AS vacationhours from faculty;

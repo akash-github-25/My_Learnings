@@ -1,0 +1,11 @@
+Comparable:-
+a.It is present in java.lang package.
+b.It provides single sorting sequence.
+c.We can sort the list elements of Comparable type by Collections.sort(List) method.
+d.It provides compareTo() method to sort elements.
+
+comparator:-
+a.It is present in java.util package.
+b.It provides Multiple sorting sequence.
+c.We can sort the list elements of Comparator type by Collections.sort(List, Comparator) method.
+d.It provides compare() method to sort elements.

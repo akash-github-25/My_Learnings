@@ -1,0 +1,11 @@
+HashCode=
+a.It returns hashcode value of the object.
+b.If two objects are same by equals method then hashcode() method will return the same value.
+c.syntax=public int hashcode();
+d.Hashcode and equals goes hand in hand.
+
+equals=
+a.it return true if both objects are same ie it is stored in same memory location.
+b.it returns boolean value.
+c.public boolean equals(Object obj);
+d.Hashcode and equals goes hand in hand.

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="number" id="age">
+        <input type="text" id="gender">
+        <select name="" id="select">
+            <option value="">category</option>
+            <option value="General">General</option>
+            <option value="VIP">VIP</option>
+            <option value="VVIP">VVIP</option>
+        </select>
+        <input type="submit" placeholder="Book Ticket">
+    
+    </form>
+    <h1 id="slots">slots avilable</h1>
+    <div id="container"></div>
+</body>
+
+</html>
+<script>
+
+    class Detail {
+        #age;
+        #gender;
+        
+        constructor(age, gen, cat) {
+            this.#age = age
+            this.#gender = gen
+            this.category = cat
+        }
+
+        get age() {
+            return `Age: ${this.#age}`
+        }
+        get gender() {
+            return `Gender: ${this.#gender}`
+        }  
+        // get category() {
+        //     return `Category: ${this.#category}`
+        // }
+    }
+
+    class VIP extends Detail {
+        constructor(age,gen) {
+            super(age, gen, "VIP")
+        }
+    }
+
+    class VVIP extends Detail {
+        constructor(age,gen) {
+            super(age, gen, "VVIP")
+        }
+    }
+    class General extends Detail {
+        constructor(age,gen) {
+            super(age, gen, "General")
+        }
+    }
+
+
+
+    class iplStadium {
+        #floors;
+
+        constructor(number) {
+
+            this.#floors = []
+            this.numberofFloors = number
+            for (let i = 0; i < number; i++) {
+                this.#floors[i] = new StadiumFloor(i, number)
+            }
+        }
+
+        findSlot(category) {
+            for (let i = 0; i < this.numberofFloors; i++) {
+
+                for (let slot of this.#floors[i].StadiumSpots) {
+                    // console.log(slot.category)
+                    // console.log(slot)
+                    if (slot.category === category && !slot.isBooked) {
+                        alert("Booking Done")
+                        if(i== this.numberofFloors-1 ){
+                            document.querySelector("#slots").innerText="Slots Unavilable"
+                        }
+                        return { floornumber: i, slot: slot }
+                    }
+                  
+                }
+            }
+            return false;
+        }
+
+        Sitting(person) {
+            
+            let slot = this.findSlot(person.category)
+            console.log(person.category)
+            if (slot == false) {
+                alert("full")
+            } else {
+                slot.slot.book = true;
+            }
+        }
+    }
+
+
+    class StadiumFloor {
+
+        #floornumber;
+        constructor(floornumber, maxFloor) {
+            this.#floornumber = floornumber
+            this.StadiumSpots = []
+
+            for (let i = 0; i < maxFloor; i++) {
+                for(let j=0;j<5;j++){
+                if (i === 0) {
+                   
+                    this.StadiumSpots.push(new Slot("VIP", j))
+                } else if (i === 1) {
+                    this.StadiumSpots.push(new Slot("VVIP", j))
+                } else {
+                    this.StadiumSpots.push(new Slot("General", j))
+                }
+            
+            }
+        }
+    }
+}
+    class Slot {
+
+        #isBooked
+        constructor(category, number) {
+            this.number = number;
+            this.category = category;
+            this.#isBooked = false
+        }
+        get isBooked() {
+            return this.#isBooked
+        }
+        set book(bool) {
+            this.#isBooked = bool
+        }
+    }
+
+
+
+    document.querySelector("form").addEventListener("submit", on)
+
+    function on(event) {
+        event.preventDefault()
+        
+        let select = document.querySelector("#select").value
+        if (select == "VIP") {
+            vip();
+        } else if (select == "VVIP") {
+            vvip()
+        } else if (select == "General") {
+            general()
+        }
+    }
+
+
+    function vip() {
+        document.querySelector("#slots").innerText="VIP Slots Available"
+        let age = document.querySelector("#age").value
+        let gender = document.querySelector("#gender").value
+        let arr = []
+        arr.push(new VIP(age, gender))
+        display(arr)
+    }
+
+    function vvip() {
+        document.querySelector("#slots").innerText="VVIP Slots Available"
+        let age = document.querySelector("#age").value
+        let gender = document.querySelector("#gender").value
+        let arr = []
+        arr.push(new VVIP(age, gender))
+        display(arr)
+    }
+
+    function general() {
+        document.querySelector("#slots").innerText="General Slots Available"
+        let age = document.querySelector("#age").value
+        let gender = document.querySelector("#gender").value
+        let arr = []
+        arr.push(new General(age, gender))
+        display(arr)
+    }
+
+
+
+    let abc = new iplStadium(3)
+
+    function display(arr) {
+
+        arr.forEach((el, index) => {
+            let div = document.createElement("div")
+            let p1 = document.createElement("h1")
+            p1.innerText = el.age
+            let p2 = document.createElement("h1")
+            p2.innerText = el.gender
+            let cat=document.createElement("h1")
+            cat.innerText = el.category
+            let btn = document.createElement("button")
+            btn.innerText = "Book Ticket"
+            btn.addEventListener("click", function () {
+                abc.Sitting(el)
+                console.log(abc)
+            })
+            div.append(p1, p2, cat,btn)
+            document.querySelector("#container").append(div)
+        })
+
+    }
+    
+</script>

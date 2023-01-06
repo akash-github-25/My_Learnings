@@ -1,0 +1,9 @@
+OVERLOADING:->
+
+a.WE achieve static polymorphism by method overloading.
+b.Which method will be executed will be executed will be decided at compile time.
+
+OVERRIDING:->
+
+a.WE achieve dynamic polymorphism by method overriding.
+b.Which method will be executed  will be decided at run time.

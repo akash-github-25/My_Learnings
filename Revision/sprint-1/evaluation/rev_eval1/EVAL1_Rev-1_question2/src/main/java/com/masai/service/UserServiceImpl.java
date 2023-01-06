@@ -1,0 +1,73 @@
+package com.masai.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.Repository.EmailRepo;
+import com.masai.Repository.UserRepo;
+import com.masai.bean.Email;
+import com.masai.bean.User;
+
+@Service
+public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	public UserRepo ur;
+	@Autowired
+	public EmailRepo er;
+
+	@Override
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		User user1=ur.save(user);
+		return user1;
+	}
+
+	@Override
+	public User deleteUser(Integer userId) {
+		// TODO Auto-generated method stub
+		Optional<User> o=ur.findById(userId);
+		User use=o.get();
+		ur.delete(use);
+		return use;
+	}
+
+	@Override
+	public User viewUser(Integer userId) {
+		// TODO Auto-generated method stub
+		Optional<User> use=ur.findById(userId);
+		return use.get();
+		
+	}
+
+	@Override
+	public List<User> viewAllBooking() {
+		// TODO Auto-generated method stub
+		List<User> use=ur.findAll();
+		return use;
+	}
+
+	@Override
+	public Email addEmail(User user,Email email) {
+		// TODO Auto-generated method stuber.ad
+		Email f=er.save(email);
+		return f;
+	}
+
+	@Override
+	public Email getEmail(Integer userId, Integer emailId) {
+		// TODO Auto-generated method stub
+		
+//		Optional<User> use=ur.findById(userId);
+//		User user1=use.get();
+//		Email m=user1.getEmail();
+//		System.out.println(m);
+//		return m;
+	Optional<Email> email=er.findById(emailId);
+	return email.get();
+	}
+
+}

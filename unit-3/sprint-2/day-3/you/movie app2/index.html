@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 15px;
+        /* height:60%; */
+        
+    }
+    #container>div{
+        border: 1px solid red;
+        height:100%;
+        text-align: center;
+        margin-bottom: -150px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+        background-color: teal;
+        opacity: 100px;
+    }
+    #container>div>img{
+        height: 70%;
+        width:70%;
+        margin: 10px;
+    }
+    #search{
+        width:400px;
+        margin-bottom: 40px;
+        height: 70px;
+        text-align: center;
+        text-decoration: solid;
+        opacity: 20px;
+        color:oldlace;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    }
+    #find{
+        width:70px;
+        height:50px
+    }
+    #heading{
+          border: 1px solid red;
+          margin: auto;
+          text-align: center;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          margin-bottom: 20px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          background-color:darksalmon;
+          position: sticky;
+          top:0;
+          z-index: 1;
+           }     
+</style>
+<body>
+    
+    <div id="heading"><h1>THOR MOVIES PRESENTS</h1></div>
+    
+    <input type="text" id="search" placeholder="SEARCH MOVIES HERE">
+    
+    <!-- <button id="find">SEARCH</button> -->
+    <select name="" id="sec">
+        <option value="year">year</option>
+        <option value="lh">lh</option>
+        <option value="hl">hl</option>
+        <option value="2015">>2015</option>
+        <!-- <option value="imdb">imdb</option> -->
+    </select>
+    <div id="container"></div>
+    
+</body>
+</html>
+<script>
+      let container=document.querySelector("#container")
+   let search =document.querySelector("#search")
+   let t=[]
+   search.addEventListener("keyup",on)
+   function on(e){
+    // console.log(e)
+    let searchstring=e.target.value
+    // console.log(searchstring)
+    // console.log(searchstring)
+    // console.log(t)
+    let filterchar=t.filter(function(el){
+        return el.Title.includes(searchstring)
+    })
+ if(filterchar.length!=0){
+    append(filterchar);
+ }else{
+    document.querySelector("#container").innerHTML=""
+    // let im1=document.querySelector("#tata")
+            window.location.href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkJCXsC9Y4cMn-oPZ85XO1BsoRT9F_jyGHyQ&usqp=CAU"
+ }
+//  document.querySelector("#sec").addEventListener("change",on2)
+//  function on2(){
+//     let y= document.querySelector("#sec").value
+//     console.log(y)
+//     if(y=="hl"){
+//         console.log(y)
+//        let x= t.sort(function(a,b){
+//             return a.Year-b.Year
+//         })
+//         append(x)
+//     }
+//  }
+
+   }
+    const url="https://www.omdbapi.com/?s=thor&apikey=b1481d76"
+    async function data(){
+       let res=await fetch(url) 
+      let  x= await res.json()
+         t=x.Search
+        //  console.log(x.Search)
+       append(t)
+
+       document.querySelector("#sec").addEventListener("change",on2)
+ function on2(){
+    let y= document.querySelector("#sec").value
+    // console.log(y)
+    if(y=="lh"){
+        // console.log(y)
+        // console.log(t)
+        t.sort(function(a,b){
+            // if(Number(a.Year)>Number(b.Year)){
+            //     return 1
+            // }
+    
+            return a.Year-b.Year
+            // console.log(w)
+        })
+        // console.log(w)
+        // console.log(t)
+        append(t)
+    }else if(y=="hl"){
+        t.sort(function(a,b){
+            // if(Number(a.Year)>Number(b.Year)){
+            //     return 1
+            // }
+    
+            return b.Year-a.Year
+            // console.log(w)
+        })
+        append(t)
+    }else if(y=="2015"){
+        let w=t.filter(function(el){  return (el.Year>2015)
+        })
+      append(w)
+    }
+}
+ }
+    
+    data()
+
+    function append(data){
+       
+        // console.log(data)
+        
+            // console.log("no")
+            // let container=document.getElementById("container")
+           
+        //     let div1=document.createElement("div");
+        // div1.append(im1)
+        // container.append(div1)
+        // window.location.href=""
+
+           
+        document.querySelector("#container").innerHTML=""
+        let container=document.getElementById("container")
+    // data.sort(function(a,b){
+    //     return a.price-b.price
+    // });
+    data.forEach(function(el){
+        let img=document.createElement("img");
+        img.src=el.Poster;
+        let p=document.createElement("p")
+        p.innerText=`Name-${el.Title}`
+        let price=document.createElement("p")
+        price.innerText=`Data-${el.Year}`
+        let imdb=document.createElement("p")
+        imdb.innerText=`Ratings-${Math.floor(Math.random()*10)+1}`
+        let div=document.createElement("div");
+        div.append(img,p,price,imdb)
+        container.append(div)
+    })
+ }
+</script>

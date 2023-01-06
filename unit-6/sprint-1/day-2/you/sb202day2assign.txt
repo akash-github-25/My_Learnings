@@ -1,0 +1,82 @@
+1.
+a. Layered architecture is needed so that the data can be maintained well, is made flexible, and can scale to any levels in the architecture.
+   Solutions are built in different components so that interoperations can be made with different layers with flexible implementation.
+b. Clarity is made related to architectural layers and the separation of different blocks with their functions so that applications 
+   can be made to communicate with each other over networks or connectivity protocol. As a result, applications are easily deployed 
+   with this architecture without changing the entire layer of the application.
+c. Systems can be made run in either fiber optic cable or network connections above the physical layer without interaction with any of 
+   the other layers in the network. Thus, top to bottom change is not needed in the implementation.Application need not be aware of the 
+   network separation or subnets within the application layer so that communication between the systems or application layers are done 
+   without any disturbance.
+
+2. 
+
+JPA-JPA is data base independent, single query will work for all ORACLE, MySQL, SQLServer etc. If we change the database, we need to 
+    change just the provider in configuration file.JPA supports caching, two level of cache. First level and 2nd level. So we can store 
+    the data into Cache for better performance.No need to create any connection pool in case of JPA.
+
+JDBC-In case of JDBC, query must be data base specific. If we change the database, we need to change all the database queries.
+     In case of JDBC we need to implement our java cache, and there is no built in cache support.In case of JDBC we need to create
+     our own connection pool.      
+
+  
+3.
+   JPA- 
+
+   a. JPA is a specification. and Hibernate is its one of the famous implementation.
+
+   b.JPA:- (Java persistence api) :- it is an open specification given by Oracle corp,  to develop any ORM based s/w .
+
+   c.JPA provides a standard api to work with any kind of ORM based s/w .
+
+   d.JPA api belongs from "javax.persistence" package.
+
+   HIBERNATE-
+
+   a.Hibernate is one of the most frequently used JPA implementation
+
+   b.HB provides its own api to develop ORM based persistence logic , if we use those api then
+     our application will become vendor lock, ie we can not port our application accross multiple 
+     ORM s/w. 
+
+  c.HB api comes in the form of "org.hibernate" package.
+
+4.
+  PROPERTIES OF JPA-
+   
+   a. JPA is a specification. and Hibernate is its one of the famous implementation.
+
+   b.JPA:- (Java persistence api) :- it is an open specification given by Oracle corp,  to develop any ORM based s/w .
+
+   c.JPA provides a standard api to work with any kind of ORM based s/w .
+
+   d.JPA api belongs from "javax.persistence" package.
+
+5.  ORMS-
+ 
+       Object-relational-mapping is the idea of being able to write complicated queries using the object-oriented paradigm of 
+       your preferred programming language.
+    USES-
+       a.It abstracts away the database system so that switching from MySQL to PostgreSQL, or whatever flavor you prefer, is easy-peasy.
+       b.Depending on the ORM you get a lot of advanced features out of the box, such as support for transactions, connection pooling, 
+         migrations, seeds, streams, and all sorts of other goodies.
+       c.Many of the queries you write will perform better than if you wrote them yourself.
+
+
+6.
+    CORE COMOPONENTS OF HIBERNATE-
+ 
+   a.Hibernate is an Open Source Framework.
+   b.Hibernate is better than JBDC.
+   c.It supports polymorphism and inheritance.
+   d.This framework can support a group of databases.
+   e.This framework can support the relationship like One-to-Many, Many-to-Many, One-to-One.
+   f.The Hibernate has query language it is called Hibernate Query language.
+   g.Hibernate can support lazy loading.
+   h.It also supports notes along with XML.
+   i.Hibernate framework has parallel support.
+   j.Hibernate supports a database associate pool.
+   k.Hibernate framework is easy to handle and it will increase productivity.
+   
+
+

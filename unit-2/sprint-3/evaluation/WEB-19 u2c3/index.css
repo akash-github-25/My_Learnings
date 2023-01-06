@@ -1,0 +1,65 @@
+/* Fill CSS here */
+h1{
+    margin-left: 300px;
+    color:#01579b;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 70px;
+    
+}
+div{
+    display: flex;
+    justify-content: space-between;
+}
+input{
+    margin-bottom: 4px;
+    width:250px;
+    height: 25px;
+    margin-top: 3px;
+    margin-left: 10px;
+}
+select{
+    margin-bottom: 5px;
+    margin-top: 3px;
+    margin-left: 10px;
+}
+form{
+    margin-left: 40px;
+    margin-top: 45px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   height:380px;
+    width:290px;
+    padding: 10px;
+    padding-top: 25px;
+     
+}
+input:last-child{
+    background-color: #01579b;
+    border-radius: 5px;
+    border-width: 0px;
+}
+table{
+    height: 40px;
+    margin-top: 8px;
+}
+th{
+color: white;
+background-color:#01579b ;
+margin-right: 10px;
+height: 7px;
+width: 100px;
+margin-left: 40px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+label{
+    margin-left: 10px;
+    font-weight: 700px;
+}
+td{
+    text-align: center;
+}
+#btn{
+    margin-top: 7px;
+}
+
+

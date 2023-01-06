@@ -1,0 +1,20 @@
+Q2/- Explain the difference between JPA and Hibernate?
+
+
+JPA-
+It is defined in javax.persistance package.
+It uses JPQL as an object-oriented query Language to perform database operation.
+It defines the management of relational data in the java application.
+
+Hibernate-
+It is defined org.hibernate package.
+It uses HQL as an Object-oriented query Language to perform database operation.
+It is a ORM tool which is used to save the state of java object into the database.
+
+
+What are the advantages of using Hibernate over JDBC?
+
+1.Hibernate Supports relationship like one to one ,many to may ,many to one.
+2.It supports collection like List,Set,Map.
+3.Hibernate Supports inheritence ,Associations,Collections etc.
+4.Hibernate have translator that converts checked to unchecked.

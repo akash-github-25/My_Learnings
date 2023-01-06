@@ -1,0 +1,4 @@
+A race-condition is a condition in which the critical section (a part of the program where shared memory is accessed)
+is concurrently executed by two or more threads. It leads to incorrect behavior of a program.
+In layman terms, a race condition can be defined as, a condition in which two or more threads compete together to
+get certain shared resources.

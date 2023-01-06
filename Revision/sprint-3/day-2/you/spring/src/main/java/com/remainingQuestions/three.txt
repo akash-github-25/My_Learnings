@@ -1,0 +1,8 @@
+SPRING-BOOT:-
+
+With the spring boot, our spring application development process will be simplified.
+Spring boot supports auto-configurations
+It provides an integrated tomcat server, so we can develop a Web-based applications without installing the Webserver
+separately.
+With the help of spring boot, we can develop Web-application, web services, microservices, and spring cloud-based
+applications very easily.

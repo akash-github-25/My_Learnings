@@ -1,0 +1,49 @@
+#movies{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows: repeat(3,150px); */
+    gap:20px;
+}
+#movies>div{
+    width:300px;
+    height:auto;
+}
+#movies>div>img{
+    width:300px;
+    height:auto;
+}
+#slideshow{
+    display: block;
+    width:80%;
+    height:300px;
+    margin: auto;
+}
+#slideshow>img{
+    width:80%;
+    height:300px;
+}
+#nav{
+    border:1px solid red;
+    height:100px;
+    display: flex;
+    justify-content: space-between;
+    /* height:200px; */
+    /* height: 200px; */
+    background-color: teal;
+}
+#nav>div:last-child{
+    border: 1px solid red;
+    width:20%;
+
+    display: flex;
+    justify-content: space-around;
+    
+    
+}
+#nav>div:first-child{
+    padding-top: 20px;
+}
+a{
+    margin-top: 60px;
+    text-decoration: none;
+}

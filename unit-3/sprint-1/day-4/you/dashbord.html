@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        #container{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            justify-content: space-evenly;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let data=JSON.parse(localStorage.getItem("detail"))||[]
+    display(data)
+    function display(data){
+    data.forEach(function(el,index){
+        let div=document.createElement("div")
+        let img=document.createElement("img")
+        img.setAttribute("src",el.image)
+        let nam=document.createElement("p")
+        nam.innerText=el.name
+        let batch=document.createElement("p")
+        batch.innerText=el.batch
+        let course=document.createElement("p")
+        course.innerText=el.course
+        let unit=document.createElement("p")
+        course.innerText=el.unit
+        let btn=document.createElement("button")
+        btn.innerText="delete"
+        btn.addEventListener("click",function(){
+        
+            deletedata(index)
+        });
+        div.append(img,nam,batch,course,unit,btn)
+        document.querySelector("#container").append(div)
+    })
+}
+// display();
+    function deletedata(index){
+        // console.log("yes")
+        let data=JSON.parse(localStorage.getItem("detail"))||[]
+        let newData=data.filter(function(el,i){
+//             console.log(el)
+//   console.log(i)
+//   console.log(index)
+            if(i==index){
+                // console.log("yes")
+                let trash=JSON.parse(localStorage.getItem("trash"))||[]
+                trash.push(el)
+                // console.log(trash)
+                localStorage.setItem("trash",JSON.stringify(trash))
+            }else{
+                return i!=index
+                
+            }
+        })
+        localStorage.setItem("detail",JSON.stringify(newData))
+        // display(newData)
+        
+        window.location.reload()
+    }
+    // display(newData)
+    // deletedata()
+    function cal(){
+        let data=JSON.parse(localStorage.getItem("detail"))||[]
+        let obj={}
+        for(let i=0;i<data.length;i++){
+            if(obj[data[i].batch]==undefined){
+                obj[data[i].batch]=1
+            }else{
+                obj[data[i].batch]++
+            }
+        }
+        for(let key in obj){
+           let p= document.createElement("p")
+           p.innerText=key +" "+"count-"+obj[key]
+           document.querySelector("#nav").append(p)
+        }
+    }
+    cal()
+</script>

@@ -1,0 +1,17 @@
+What is the J2EE, list out some of the Application Server names?
+
+->
+J2EE is a specification for a collection of software components to enable development 
+of multi-tiered web-based applications. These software components include servlets, 
+Java Server Pages (JSPs), and Enterprise Java Beans (EJBs) – technologies described in 
+earlier articles.
+
+Some of the application server s/w are:
+
+Websphere server : from IBM
+
+Weblogic server : from Oracle
+
+Glassfish server : from Oracle
+
+JBOSS server/ Wildfly server: RedHat 

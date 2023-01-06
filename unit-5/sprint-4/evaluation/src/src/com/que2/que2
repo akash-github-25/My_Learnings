@@ -1,0 +1,50 @@
+ 1.
+ create table department(did int primary key,dname varchar(12) not null,location varchar(12) not null);
+ 
+ create table Employee(empid int primary key,ename varchar(12) not null,address varchar(12) not null,mobile varchar(12) not null,salary int not null,deptid int);
+ 
+ create table Student_course(did int,empid int,foreign key (did) references department(did),foreign key (empid) references Employee(empid));
+ 
+ 
+ 2.
+  insert into department values(1,'Accounts','kol');
+  insert into department values(2,'Sales','mum');
+  insert into department values(3,'Marketing','del');
+  insert into department values(4,'HR','hyd');
+  
+3.
+  insert into Employee values(10,'akash','kol','711227',100,1);
+
+  insert into Employee values(20,'ayush','kol','711337',110,1)
+4.
+ insert into Employee values(30,'ayushi','mum','711637',110,2);
+
+ insert into Employee values(40,'arushi','mum','731637',115,2);
+
+ insert into Employee values(50,'abhi','mum','731637',116,2); 
+
+5.
+ insert into Employee values(60,'subham','del','731737',166,3);
+
+ insert into Employee values(70,'rony','del','431737',186,3);
+ 
+6.
+ insert into Employee values(80,'vikki','hyd','471737',196,4);
+
+ insert into Employee values(90,'khali','hyd','481737',296,4);
+
+
+7.
+ select deptid,sum(salary) from Employee group by deptid;
+ 
+8.
+  select E.empid,E.ename,E.address,E.mobile,E.salary,E.deptid,D.dname from Employee E INNER JOIN department D INNER JOIN student_course S ON E.empid=S.empid AND D.did=S.did AND D.dname='Sales';
+  
+  
+ 9.
+ select D.did,D.dname,D.location,E.empid from Employee E INNER JOIN department D ON E.deptid=D.did;
+ 
+ 10.
+  select * from Employee where salary=(select max(salary) from Employee where salary<(select max(salary) from Employee));
+   
+ 

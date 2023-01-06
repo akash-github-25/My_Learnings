@@ -1,0 +1,11 @@
+1->
+Static Variable-
+a.  using static variable and static method we represent class level
+members.
+b.Static Variables can be easily used in main method.
+
+2->
+Non-Static Variable-
+a. Using non-static variables and methods, we represent the state and behaviour
+of an object.
+b. Non-static Variables requires object to be used inside main method

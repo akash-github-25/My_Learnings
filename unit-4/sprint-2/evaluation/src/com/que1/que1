@@ -1,0 +1,90 @@
+a->Why String is immutable in java and what is the difference between String and String Builder? And Write
+some of the methods of String class at least 5 with example.?
+
+ans->String is immutable because once a String is created we cannot update it.
+
+for ex-
+String s="akash";
+s.concat("mishra");
+System.out.println(s);
+
+ output=akash.
+ 
+ what is the difference between String and String Builder?
+ 
+ String-
+ a.String created by string class is immutable.
+ b.It requires more memory to create new instance.
+ c.Slow as compared to string builder.
+ 
+ String Builder-
+ a.String created by this class is mutable.
+ b.It requires less memory as it updates the existing instance.
+ c.It is fast as compared to String.
+ 
+ some of the methods of String class at least 5 with example.
+ 
+ 1.int length();
+ string str="akash";
+ string.length-5;
+ 
+ 2.String concat(String args)
+ String str="akash"
+ String b=str.concat("mishra");
+ b=akashmishra
+ 
+ 3.boolean equals(Oject args);
+ String str="akash"
+ str.equals("aka")-false;
+ 
+ 4.String substring(int i);
+ String str="akash mishra"
+ str.substring(0)-akash;
+ 
+ 5.Char charAt(int i);
+ String str="akash mishra"
+ str.charAt(0)-a
+ 
+ 
+ 
+ b) What is the difference between equals method and == operator in java? And what will be the output of the
+following code snippets and giving proper explanation.?
+
+equals method-
+   used for content comparision.
+   it is a method of object class.
+   it can be override.
+   
+ == method=
+    used for reference comparision.
+    it is an oprator.
+    can't be overridden.
+    
+    
+    code snippets and giving proper explanation
+    
+    
+  String s1 = new String("abc");
+String s2 = new String("abc");
+System.out.println(s1.equals(s2));
+
+true, here we are comparing the content
+
+
+
+StringBuilder sb1 = new StringBuilder("abc");
+StringBuilder sb2 = new StringBuilder("abc");
+System.out.println(sb1.equals(sb2));
+
+false, StringBuilde can't compare object.
+
+
+String s1 = new String("abc");
+String s2 = new String("abc");
+System.out.println(s1==s2);
+
+false, it compares address and both have different address.
+
+
+
+

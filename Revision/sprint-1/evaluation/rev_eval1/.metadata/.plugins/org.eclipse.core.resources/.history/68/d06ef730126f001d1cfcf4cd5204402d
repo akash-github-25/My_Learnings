@@ -1,0 +1,84 @@
+package com.masai.bean;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+@Entity
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // to autogenerate ID.
+	private Integer id; 
+	private String name;
+	private Integer phoneNo;
+	private Date dateOfBirth;
+	
+	
+	@OneToOne
+	private Email email;
+
+	public User(Integer id, String name, Integer phoneNo, Date dateOfBirth, Email email, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phoneNo = phoneNo;
+		this.dateOfBirth = dateOfBirth;
+		this.email = email;
+		this.user = user;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(Integer phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Email getEmail() {
+		return email;
+	}
+
+	public void setEmail(Email email) {
+		this.email = email;
+	}
+
+	
+	
+	
+	
+	
+	
+}

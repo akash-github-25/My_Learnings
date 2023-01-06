@@ -1,0 +1,55 @@
+Generics:
+=======
+The main objective of Generics is to achieve typesafty.It makes the code stable by detecting the bugs at compile time.
+Generics concept mostly used with collection f/w related classes, but we can apply the generics concept without collection f/w also.
+
+adv of generics:
+-------------------
+1.type checking at compile time(typeSafety).
+2.get rid of downcasting problem.
+3.with this our code will become bug(most of them detected at compile time) free and more stable.
+
+example :
+
+MyGen.java:
+-----------------
+
+package com.masai;
+
+public class MyGen<T> {
+	
+	T data;
+	
+	public MyGen(T data) {
+		this.data=data;
+	}
+	
+	public T getData() {
+		return data;
+	}
+
+}
+
+
+Demo.java:
+--------------
+
+package com.masai;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		
+		MyGen<Integer> m1= new MyGen<>(10);
+		System.out.println(m1.getData());
+		
+		MyGen<String> m2=new MyGen<>("Hello");
+		System.out.println(m2.getData());
+		
+		
+		MyGen<Student> m3= new MyGen<>(new Student(10, "Ram", 500));
+		System.out.println(m3.getData());
+				
+	}
+
+}

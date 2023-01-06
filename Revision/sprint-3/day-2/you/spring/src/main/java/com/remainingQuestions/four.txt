@@ -1,0 +1,34 @@
+Spring vs Spring Boot
+
+1.Spring Framework is a widely used Java EE framework for building applications.
+Spring Boot Framework is widely used to develop REST APIs .
+
+2.It aims to simplify Java EE development that
+makes developers more productive.
+It aims to shorten the code length and provide the easiest
+way to develop Web Applications .
+
+3.The primary feature of the Spring
+Framework is dependency injection .
+The primary feature of Spring Boot is Autoconfiguration .
+It automatically configures the classes based on the
+requirement.
+
+4.It helps to make things simpler by allowing
+us to develop loosely coupled
+applications.
+It helps to create a stand-alone application with less
+configuration.
+
+5.The developer writes a lot of code
+(boilerplate code ) to do the minimal task.
+It reduces boilerplate code.
+
+spring mvc vs spring boot
+
+Spring Boot: Spring Boot makes it easy to quickly bootstrap and start developing a Spring-based application.
+ It avoids a lot of boilerplate code. It hides a lot of complexity behind the scene so that the developer 
+ can quickly get started and develop Spring-based applications easily.
+
+Spring MVC: Spring MVC is a Web MVC Framework for building web applications. It contains a lot of
+ configuration files for various capabilities. It is an HTTP oriented web application development framework.

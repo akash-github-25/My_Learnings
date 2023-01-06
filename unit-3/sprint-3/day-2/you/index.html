@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class automobile{
+       constructor(n,k){
+        this.type=n,
+        this.price=k
+    }
+}
+    let bike=new automobile("two wheeler","100")
+    let car=new automobile("four wheeler","400")
+    automobile.prototype.name=function(c){
+        this.name=c
+    }
+    bike.name("ninja")
+    car.name("jaguar")
+    // template.prototype.name="akash"
+    console.log(bike)
+    console.log(car)
+    // let obj=Object.create(automobile)
+    // console.log(obj)
+    
+</script>
